@@ -51,11 +51,15 @@ const HeroSection = () => {
         overflow: 'hidden',
       }}
     >
-      {/* Subtle gradient only */}
+      {/* Subtle gradient backdrop */}
       <div style={{
         position: 'absolute',
-        inset: 0,
-        background: 'radial-gradient(ellipse at top, rgba(255, 255, 255, 0.03), transparent 50%)',
+        top: '0',
+        left: '50%',
+        transform: 'translateX(-50%)',
+        width: '800px',
+        height: '800px',
+        background: 'radial-gradient(circle, rgba(255, 255, 255, 0.02), transparent 70%)',
         pointerEvents: 'none',
       }}></div>
 
@@ -70,13 +74,13 @@ const HeroSection = () => {
           width: '100%',
         }}
       >
-        {/* Main title - Clean typography */}
+        {/* Main title */}
         <h1
           style={{
             fontSize: 'clamp(48px, 7vw, 84px)',
             fontWeight: '600',
             lineHeight: 1.05,
-            letterSpacing: '-0.04em',
+            letterSpacing: '-0.045em',
             color: '#ffffff',
             marginBottom: '24px',
           }}
@@ -86,7 +90,7 @@ const HeroSection = () => {
           Visual Intelligence
         </h1>
 
-        {/* Subtitle - Muted, elegant */}
+        {/* Subtitle */}
         <p
           style={{
             fontSize: 'clamp(18px, 2vw, 21px)',
@@ -100,70 +104,72 @@ const HeroSection = () => {
           Master programming through interactive 2D visualizations and AI-powered guidance
         </p>
 
-        {/* Clean minimal buttons */}
-        {/* Clean minimal buttons */}
-          <div
+        {/* Refined buttons */}
+        <div
+          style={{
+            display: 'flex',
+            flexDirection: 'row',
+            gap: '12px',
+            justifyContent: 'center',
+            alignItems: 'center',
+            marginBottom: '80px',
+            flexWrap: 'wrap',
+          }}
+        >
+          <button
             style={{
-              display: 'flex',
-              flexDirection: 'row',
-              gap: '12px',
-              justifyContent: 'center',
-              alignItems: 'center',
-              marginBottom: '80px',  // Changed from 120px
-              flexWrap: 'wrap',
+              background: '#ffffff',
+              color: '#000000',
+              padding: '14px 28px',
+              borderRadius: '8px',
+              fontSize: '15px',
+              fontWeight: '600',
+              border: 'none',
+              cursor: 'pointer',
+              transition: 'all 0.2s',
+              boxShadow: '0 4px 12px rgba(255, 255, 255, 0.1)',
+            }}
+            onMouseEnter={(e) => {
+              e.target.style.transform = 'translateY(-2px)';
+              e.target.style.boxShadow = '0 6px 16px rgba(255, 255, 255, 0.15)';
+            }}
+            onMouseLeave={(e) => {
+              e.target.style.transform = 'translateY(0)';
+              e.target.style.boxShadow = '0 4px 12px rgba(255, 255, 255, 0.1)';
             }}
           >
-            <button
-              style={{
-                background: '#ffffff',
-                color: '#000000',
-                padding: '14px 28px',
-                borderRadius: '8px',
-                fontSize: '15px',
-                fontWeight: '600',
-                border: 'none',
-                cursor: 'pointer',
-                transition: 'all 0.2s',
-              }}
-              onMouseEnter={(e) => {
-                e.target.style.transform = 'translateY(-1px)';
-                e.target.style.background = 'rgba(255, 255, 255, 0.9)';
-              }}
-              onMouseLeave={(e) => {
-                e.target.style.transform = 'translateY(0)';
-                e.target.style.background = '#ffffff';
-              }}
-            >
-              Get Started
-            </button>
-          
-            <button
-              style={{
-                border: '1px solid rgba(255, 255, 255, 0.15)',
-                background: 'transparent',
-                color: 'rgba(255, 255, 255, 0.9)',
-                padding: '14px 28px',
-                borderRadius: '8px',
-                fontSize: '15px',
-                fontWeight: '600',
-                cursor: 'pointer',
-                transition: 'all 0.2s',
-              }}
-              onMouseEnter={(e) => {
-                e.target.style.background = 'rgba(255, 255, 255, 0.05)';
-                e.target.style.borderColor = 'rgba(255, 255, 255, 0.3)';
-              }}
-              onMouseLeave={(e) => {
-                e.target.style.background = 'transparent';
-                e.target.style.borderColor = 'rgba(255, 255, 255, 0.15)';
-              }}
-            >
-              Watch Demo
-            </button>
-          </div>
+            Get Started
+          </button>
 
+          <button
+            style={{
+              border: '1px solid rgba(255, 255, 255, 0.15)',
+              background: 'rgba(255, 255, 255, 0.03)',
+              color: 'rgba(255, 255, 255, 0.9)',
+              padding: '14px 28px',
+              borderRadius: '8px',
+              fontSize: '15px',
+              fontWeight: '600',
+              cursor: 'pointer',
+              transition: 'all 0.2s',
+              backdropFilter: 'blur(10px)',
+            }}
+            onMouseEnter={(e) => {
+              e.target.style.background = 'rgba(255, 255, 255, 0.08)';
+              e.target.style.borderColor = 'rgba(255, 255, 255, 0.3)';
+              e.target.style.transform = 'translateY(-2px)';
+            }}
+            onMouseLeave={(e) => {
+              e.target.style.background = 'rgba(255, 255, 255, 0.03)';
+              e.target.style.borderColor = 'rgba(255, 255, 255, 0.15)';
+              e.target.style.transform = 'translateY(0)';
+            }}
+          >
+            Watch Demo
+          </button>
+        </div>
 
-        {/* Minimal stats - single line */}
+        {/* Clean stats */}
         <div
           style={{
             display: 'flex',
@@ -208,5 +214,3 @@ const HeroSection = () => {
 };
 
 export default HeroSection;
-
-
