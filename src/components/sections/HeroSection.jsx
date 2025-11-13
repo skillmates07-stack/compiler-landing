@@ -20,20 +20,17 @@ const HeroSection = () => {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Master timeline
       const masterTL = gsap.timeline({ 
         defaults: { ease: 'power3.out' },
         delay: 0.3 
       });
 
-      // Split title into words
       const titleWords = titleRef.current.querySelectorAll('span');
       const subtitleChars = subtitleRef.current.textContent.split('');
       subtitleRef.current.innerHTML = subtitleChars
         .map(char => `<span class="inline-block">${char === ' ' ? '&nbsp;' : char}</span>`)
         .join('');
 
-      // Entrance animations
       masterTL.from(titleRef.current, {
         opacity: 0,
         scale: 0.8,
@@ -88,7 +85,6 @@ const HeroSection = () => {
         ease: 'elastic.out(1, 0.4)',
       }, '-=0.6');
 
-      // Floating icons animation
       floatingIconsRef.current.forEach((icon, i) => {
         const floatTL = gsap.timeline({ repeat: -1, yoyo: true });
         floatTL.to(icon, {
@@ -118,7 +114,6 @@ const HeroSection = () => {
         });
       });
 
-      // Orbs parallax
       gsap.to(orbRef1.current, {
         x: -50,
         y: 50,
@@ -139,7 +134,6 @@ const HeroSection = () => {
         ease: 'sine.inOut',
       });
 
-      // Grid animation
       gsap.to(gridRef.current, {
         backgroundPosition: '100px 100px',
         duration: 30,
@@ -147,7 +141,6 @@ const HeroSection = () => {
         ease: 'none',
       });
 
-      // Magnetic buttons
       const buttons = ctaRef.current.querySelectorAll('button');
       buttons.forEach(button => {
         button.addEventListener('mousemove', (e) => {
@@ -173,7 +166,6 @@ const HeroSection = () => {
         });
       });
 
-      // Parallax scroll
       ScrollTrigger.create({
         trigger: heroRef.current,
         start: 'top top',
@@ -240,119 +232,129 @@ const HeroSection = () => {
   return (
     <section 
       ref={heroRef}
-      className="relative min-h-screen flex items-center justify-center overflow-hidden pt-24 pb-16"
+      className="relative min-h-screen flex items-center justify-center overflow-hidden px-6 py-24"
     >
       {/* Background layers */}
-      <div className="absolute inset-0 bg-gradient-to-b from-[#0a0a0a] via-[#1a1a1a]/50 to-[#0a0a0a]"></div>
+      <div className="absolute inset-0 bg-gradient-to-b from-[#0a0a0a] via-[#0f0f0f] to-[#0a0a0a]"></div>
       <div 
         ref={gridRef}
-        className="absolute inset-0 bg-grid-pattern opacity-20"
+        className="absolute inset-0 bg-grid-pattern opacity-10"
       ></div>
       
       {/* Glowing orbs */}
       <div 
         ref={orbRef1}
-        className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-[#3b82f6]/20 rounded-full blur-[120px] pointer-events-none"
+        className="absolute top-1/3 left-1/4 w-[400px] h-[400px] bg-[#3b82f6]/10 rounded-full blur-[100px] pointer-events-none"
       ></div>
       <div 
         ref={orbRef2}
-        className="absolute bottom-1/4 right-1/4 w-[600px] h-[600px] bg-purple-500/20 rounded-full blur-[120px] pointer-events-none"
+        className="absolute bottom-1/3 right-1/4 w-[500px] h-[500px] bg-purple-500/10 rounded-full blur-[100px] pointer-events-none"
       ></div>
 
       {/* Noise texture */}
-      <div className="absolute inset-0 opacity-[0.015] mix-blend-overlay pointer-events-none"
+      <div className="absolute inset-0 opacity-[0.02] mix-blend-overlay pointer-events-none"
         style={{
           backgroundImage: 'url("data:image/svg+xml,%3Csvg viewBox=\'0 0 400 400\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cfilter id=\'noiseFilter\'%3E%3CfeTurbulence type=\'fractalNoise\' baseFrequency=\'4\' numOctaves=\'4\' /%3E%3C/filter%3E%3Crect width=\'100%25\' height=\'100%25\' filter=\'url(%23noiseFilter)\' /%3E%3C/svg%3E")',
         }}
       ></div>
 
-      <div className="container mx-auto px-6 relative z-10">
-        <div className="max-w-5xl mx-auto text-center">
-          {/* Main heading - Professional sizing: 56-64px desktop */}
+      <div className="container mx-auto relative z-10 max-w-6xl">
+        <div className="text-center">
+          {/* LUXURY TYPOGRAPHY - Fixed letter-spacing & line-height */}
           <h1 
             ref={titleRef} 
-            className="text-[56px] md:text-[64px] font-extrabold mb-6 leading-[1.1] tracking-tight"
+            className="text-[52px] md:text-[68px] font-extrabold mb-5 leading-[1.05] tracking-[-0.03em]"
+            style={{ 
+              fontFeatureSettings: '"ss01" on, "ss02" on',
+              textRendering: 'optimizeLegibility',
+              WebkitFontSmoothing: 'antialiased'
+            }}
           >
-            <span className="inline-block">Code</span>{' '}
-            <span className="inline-block">online</span>{' '}
-            <span className="inline-block">with</span>{' '}
-            <span className="inline-block gradient-text">Visual</span>{' '}
-            <span className="inline-block gradient-text">Intelligence</span>
+            <span className="inline-block text-white">Code</span>{' '}
+            <span className="inline-block text-white">online</span>{' '}
+            <span className="inline-block text-white">with</span>
+            <br />
+            <span className="inline-block bg-gradient-to-r from-[#60a5fa] via-[#8b5cf6] to-[#a78bfa] bg-clip-text text-transparent">Visual</span>{' '}
+            <span className="inline-block bg-gradient-to-r from-[#8b5cf6] via-[#a78bfa] to-[#c4b5fd] bg-clip-text text-transparent">Intelligence</span>
           </h1>
 
-          {/* Subtitle - Professional sizing: 18-20px */}
+          {/* LUXURY SUBTITLE - Perfect spacing */}
           <p 
             ref={subtitleRef}
-            className="text-[18px] md:text-[20px] text-gray-400 mb-10 max-w-3xl mx-auto leading-[1.6] font-normal"
+            className="text-[17px] md:text-[19px] text-gray-400 mb-9 max-w-3xl mx-auto leading-[1.6] font-normal tracking-[-0.01em]"
+            style={{ 
+              fontFeatureSettings: '"kern" on',
+              textRendering: 'optimizeLegibility'
+            }}
           >
             Master programming through 2D visualization, AI-powered hints, and interactive learning across 5+ languages
           </p>
 
-          {/* CTA Buttons - Professional sizing: 16px text, proper padding */}
-          <div ref={ctaRef} className="flex flex-col sm:flex-row gap-4 justify-center mb-16">
-            <button className="group relative bg-gradient-to-r from-[#3b82f6] to-[#2563eb] text-white px-7 py-3.5 rounded-full text-[16px] font-semibold transition-all overflow-hidden shadow-[0_0_50px_rgba(59,130,246,0.4)] hover:shadow-[0_0_80px_rgba(59,130,246,0.6)]">
+          {/* LUXURY CTA BUTTONS - Carbon Design spacing */}
+          <div ref={ctaRef} className="flex flex-col sm:flex-row gap-3 justify-center items-center mb-14">
+            <button className="group relative bg-gradient-to-r from-[#3b82f6] to-[#2563eb] text-white px-6 py-3 rounded-full text-[15px] font-semibold transition-all overflow-hidden shadow-[0_4px_24px_rgba(59,130,246,0.25)] hover:shadow-[0_6px_32px_rgba(59,130,246,0.4)] hover:scale-[1.02]">
               <span className="relative z-10 flex items-center justify-center gap-2">
-                <HiLightningBolt className="text-xl group-hover:rotate-12 transition-transform" />
+                <HiLightningBolt className="text-[18px] group-hover:rotate-12 transition-transform" />
                 Start Learning Free
               </span>
               <div className="absolute inset-0 bg-gradient-to-r from-[#2563eb] to-purple-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 bg-gradient-to-r from-transparent via-white/20 to-transparent"></div>
             </button>
             
-            <button className="group relative border-2 border-[#3b82f6] text-white hover:bg-[#3b82f6]/10 px-7 py-3.5 rounded-full text-[16px] font-semibold transition-all backdrop-blur-sm">
+            <button className="group relative border border-[#3b82f6]/30 hover:border-[#3b82f6]/60 text-white hover:bg-[#3b82f6]/5 px-6 py-3 rounded-full text-[15px] font-semibold transition-all backdrop-blur-sm">
               <span className="flex items-center justify-center gap-2">
-                <HiSparkles className="text-xl group-hover:rotate-180 transition-transform duration-500" />
+                <HiSparkles className="text-[18px] group-hover:rotate-180 transition-transform duration-500" />
                 Watch Demo
               </span>
             </button>
           </div>
 
-          {/* Stats - Professional sizing: 36-40px numbers */}
-          <div ref={statsRef} className="flex flex-wrap justify-center gap-12 mb-16">
+          {/* LUXURY STATS - Refined spacing */}
+          <div ref={statsRef} className="flex flex-wrap justify-center gap-10 mb-14">
             {[
               { value: '50K+', label: 'Active Learners' },
               { value: '1M+', label: 'Code Visualizations' },
               { value: '5+', label: 'Languages' },
             ].map((stat, i) => (
-              <div key={i} className="text-center group">
-                <div className="stat-value text-[40px] font-black bg-gradient-to-r from-[#3b82f6] to-purple-500 bg-clip-text text-transparent group-hover:scale-110 transition-transform duration-300">
+              <div key={i} className="text-center group cursor-default">
+                <div className="stat-value text-[36px] font-black bg-gradient-to-r from-[#60a5fa] to-[#a78bfa] bg-clip-text text-transparent group-hover:scale-110 transition-transform duration-300 tracking-[-0.02em]">
                   {stat.value}
                 </div>
-                <div className="text-gray-500 text-[11px] mt-1.5 font-medium uppercase tracking-[0.15em]">
+                <div className="text-gray-500 text-[10px] mt-1 font-medium uppercase tracking-[0.12em]">
                   {stat.label}
                 </div>
               </div>
             ))}
           </div>
 
-          {/* Language icons - Professional sizing: 64px containers */}
-          <div className="flex justify-center gap-5 flex-wrap">
+          {/* LUXURY ICONS - Premium spacing & shadows */}
+          <div className="flex justify-center gap-4 flex-wrap">
             {languages.map((lang, i) => (
               <div
                 key={lang.name}
                 ref={el => floatingIconsRef.current[i] = el}
-                className="group relative w-16 h-16 bg-gradient-to-br from-[#1a1a1a] to-[#252525] rounded-xl flex items-center justify-center border border-[#333] hover:border-[#3b82f6] transition-all cursor-pointer overflow-hidden"
+                className="group relative w-14 h-14 bg-gradient-to-br from-[#1a1a1a] to-[#141414] rounded-xl flex items-center justify-center border border-[#2a2a2a] hover:border-[#3b82f6]/50 transition-all cursor-pointer overflow-hidden backdrop-blur-sm"
                 style={{
-                  boxShadow: `0 10px 40px -10px ${lang.bgGlow}`,
+                  boxShadow: `0 4px 16px -4px ${lang.bgGlow}, inset 0 1px 0 rgba(255,255,255,0.03)`,
                 }}
               >
                 <div 
-                  className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-xl"
+                  className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-lg"
                   style={{ backgroundColor: lang.bgGlow }}
                 ></div>
                 
-                <lang.Icon className={`text-3xl ${lang.color} relative z-10 group-hover:scale-125 transition-transform duration-300 drop-shadow-[0_0_10px_currentColor]`} />
+                <lang.Icon className={`text-[28px] ${lang.color} relative z-10 group-hover:scale-125 transition-transform duration-300 drop-shadow-[0_2px_8px_currentColor]`} />
                 
-                <div className="absolute -bottom-9 left-1/2 -translate-x-1/2 text-[11px] font-semibold text-white bg-[#1a1a1a] px-2.5 py-1 rounded-md opacity-0 group-hover:opacity-100 transition-all duration-300 whitespace-nowrap border border-[#333] group-hover:-translate-y-1">
+                <div className="absolute -bottom-9 left-1/2 -translate-x-1/2 text-[10px] font-medium text-white bg-[#1a1a1a]/90 px-2 py-1 rounded-md opacity-0 group-hover:opacity-100 transition-all duration-300 whitespace-nowrap border border-[#2a2a2a] group-hover:-translate-y-1 backdrop-blur-md">
                   {lang.name}
-                  <div className="absolute -top-0.5 left-1/2 -translate-x-1/2 w-1.5 h-1.5 bg-[#1a1a1a] border-l border-t border-[#333] rotate-45"></div>
+                  <div className="absolute -top-0.5 left-1/2 -translate-x-1/2 w-1.5 h-1.5 bg-[#1a1a1a] border-l border-t border-[#2a2a2a] rotate-45"></div>
                 </div>
 
-                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity">
+                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
                   {[...Array(3)].map((_, pi) => (
                     <div
                       key={pi}
-                      className="absolute w-1 h-1 bg-current rounded-full"
+                      className="absolute w-0.5 h-0.5 bg-current rounded-full"
                       style={{
                         top: `${Math.random() * 100}%`,
                         left: `${Math.random() * 100}%`,
@@ -367,11 +369,11 @@ const HeroSection = () => {
         </div>
       </div>
 
-      {/* Scroll indicator */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-50 hover:opacity-100 transition-opacity cursor-pointer">
-        <span className="text-[10px] text-gray-500 font-medium uppercase tracking-[0.2em]">Scroll</span>
-        <div className="w-5 h-8 border-2 border-[#3b82f6]/50 rounded-full flex justify-center p-1.5">
-          <div className="w-1 h-1.5 bg-[#3b82f6] rounded-full animate-bounce"></div>
+      {/* LUXURY SCROLL INDICATOR */}
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-40 hover:opacity-100 transition-opacity cursor-pointer">
+        <span className="text-[9px] text-gray-500 font-medium uppercase tracking-[0.15em]">Scroll</span>
+        <div className="w-[18px] h-[28px] border border-[#3b82f6]/40 rounded-full flex justify-center p-1">
+          <div className="w-0.5 h-1.5 bg-[#3b82f6] rounded-full animate-bounce"></div>
         </div>
       </div>
     </section>
