@@ -101,65 +101,67 @@ const HeroSection = () => {
         </p>
 
         {/* Clean minimal buttons */}
-        <div
-          style={{
-            display: 'flex',
-            flexDirection: 'row',
-            gap: '12px',
-            justifyContent: 'center',
-            alignItems: 'center',
-            marginBottom: '80px',
-            flexWrap: 'wrap',
-          }}
-        >
-          <button
+        {/* Clean minimal buttons */}
+          <div
             style={{
-              background: '#ffffff',
-              color: '#000000',
-              padding: '14px 28px',
-              borderRadius: '8px',
-              fontSize: '15px',
-              fontWeight: '600',
-              border: 'none',
-              cursor: 'pointer',
-              transition: 'all 0.2s',
-            }}
-            onMouseEnter={(e) => {
-              e.target.style.transform = 'translateY(-1px)';
-              e.target.style.background = 'rgba(255, 255, 255, 0.9)';
-            }}
-            onMouseLeave={(e) => {
-              e.target.style.transform = 'translateY(0)';
-              e.target.style.background = '#ffffff';
+              display: 'flex',
+              flexDirection: 'row',
+              gap: '12px',
+              justifyContent: 'center',
+              alignItems: 'center',
+              marginBottom: '80px',  // Changed from 120px
+              flexWrap: 'wrap',
             }}
           >
-            Get Started
-          </button>
+            <button
+              style={{
+                background: '#ffffff',
+                color: '#000000',
+                padding: '14px 28px',
+                borderRadius: '8px',
+                fontSize: '15px',
+                fontWeight: '600',
+                border: 'none',
+                cursor: 'pointer',
+                transition: 'all 0.2s',
+              }}
+              onMouseEnter={(e) => {
+                e.target.style.transform = 'translateY(-1px)';
+                e.target.style.background = 'rgba(255, 255, 255, 0.9)';
+              }}
+              onMouseLeave={(e) => {
+                e.target.style.transform = 'translateY(0)';
+                e.target.style.background = '#ffffff';
+              }}
+            >
+              Get Started
+            </button>
+          
+            <button
+              style={{
+                border: '1px solid rgba(255, 255, 255, 0.15)',
+                background: 'transparent',
+                color: 'rgba(255, 255, 255, 0.9)',
+                padding: '14px 28px',
+                borderRadius: '8px',
+                fontSize: '15px',
+                fontWeight: '600',
+                cursor: 'pointer',
+                transition: 'all 0.2s',
+              }}
+              onMouseEnter={(e) => {
+                e.target.style.background = 'rgba(255, 255, 255, 0.05)';
+                e.target.style.borderColor = 'rgba(255, 255, 255, 0.3)';
+              }}
+              onMouseLeave={(e) => {
+                e.target.style.background = 'transparent';
+                e.target.style.borderColor = 'rgba(255, 255, 255, 0.15)';
+              }}
+            >
+              Watch Demo
+            </button>
+          </div>
 
-          <button
-            style={{
-              border: '1px solid rgba(255, 255, 255, 0.15)',
-              background: 'transparent',
-              color: 'rgba(255, 255, 255, 0.9)',
-              padding: '14px 28px',
-              borderRadius: '8px',
-              fontSize: '15px',
-              fontWeight: '600',
-              cursor: 'pointer',
-              transition: 'all 0.2s',
-            }}
-            onMouseEnter={(e) => {
-              e.target.style.background = 'rgba(255, 255, 255, 0.05)';
-              e.target.style.borderColor = 'rgba(255, 255, 255, 0.3)';
-            }}
-            onMouseLeave={(e) => {
-              e.target.style.background = 'transparent';
-              e.target.style.borderColor = 'rgba(255, 255, 255, 0.15)';
-            }}
-          >
-            Watch Demo
-          </button>
-        </div>
 
         {/* Minimal stats - single line */}
         <div
@@ -206,4 +208,5 @@ const HeroSection = () => {
 };
 
 export default HeroSection;
+
 
