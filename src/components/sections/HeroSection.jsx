@@ -104,7 +104,7 @@ const HeroSection = () => {
         alignItems: 'center',
         justifyContent: 'center',
         background: '#000000',
-        padding: '128px 24px 80px 24px',
+        padding: '160px 24px 96px 24px',
       }}
     >
       <div style={{
@@ -140,7 +140,7 @@ const HeroSection = () => {
             lineHeight: 1.05,
             letterSpacing: '-0.03em',
             color: '#ffffff',
-            marginBottom: '32px',
+            marginBottom: '24px',
           }}
         >
           Code online with
@@ -155,13 +155,14 @@ const HeroSection = () => {
             lineHeight: 1.7,
             color: 'rgba(255, 255, 255, 0.4)',
             maxWidth: '672px',
-            margin: '0 auto 48px auto',
+            margin: '0 auto 40px auto',
             fontWeight: 'normal',
           }}
         >
           Master programming through 2D visualization, AI-powered hints, and interactive learning across 5+ languages
         </p>
 
+        {/* CTA BUTTONS - ADDED BACK */}
         <div 
           ref={ctaRef}
           style={{
@@ -170,7 +171,7 @@ const HeroSection = () => {
             gap: '12px',
             justifyContent: 'center',
             alignItems: 'center',
-            marginBottom: '80px',
+            marginBottom: '96px',
             flexWrap: 'wrap',
           }}
         >
@@ -178,7 +179,7 @@ const HeroSection = () => {
             position: 'relative',
             background: '#ffffff',
             color: '#000000',
-            padding: '12px 24px',
+            padding: '14px 28px',
             borderRadius: '8px',
             fontSize: '15px',
             fontWeight: '500',
@@ -193,7 +194,7 @@ const HeroSection = () => {
             border: '1px solid rgba(255, 255, 255, 0.1)',
             background: 'transparent',
             color: 'rgba(255, 255, 255, 0.7)',
-            padding: '12px 24px',
+            padding: '14px 28px',
             borderRadius: '8px',
             fontSize: '15px',
             fontWeight: '500',
@@ -211,7 +212,7 @@ const HeroSection = () => {
             flexWrap: 'wrap',
             justifyContent: 'center',
             gap: '80px',
-            marginBottom: '56px',
+            marginBottom: '48px',
           }}
         >
           {[
