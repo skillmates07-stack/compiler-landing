@@ -1,10 +1,12 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Header from '../components/layout/Header';
 
 const Register = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -46,7 +48,6 @@ const Register = () => {
           </p>
 
           <form onSubmit={handleSubmit}>
-            {/* Name */}
             <div style={{ marginBottom: '16px' }}>
               <label style={{
                 display: 'block',
@@ -76,7 +77,6 @@ const Register = () => {
               />
             </div>
 
-            {/* Email */}
             <div style={{ marginBottom: '16px' }}>
               <label style={{
                 display: 'block',
@@ -106,7 +106,6 @@ const Register = () => {
               />
             </div>
 
-            {/* Password */}
             <div style={{ marginBottom: '24px' }}>
               <label style={{
                 display: 'block',
@@ -136,7 +135,6 @@ const Register = () => {
               />
             </div>
 
-            {/* Submit Button */}
             <button
               type="submit"
               style={{
@@ -162,16 +160,16 @@ const Register = () => {
             textAlign: 'center',
           }}>
             Already have an account?{' '}
-            <a
-              href="/signin"
+            <span
+              onClick={() => navigate('/signin')}
               style={{
                 color: '#ffffff',
-                textDecoration: 'none',
                 fontWeight: '600',
+                cursor: 'pointer',
               }}
             >
               Sign in
-            </a>
+            </span>
           </p>
         </div>
       </div>
