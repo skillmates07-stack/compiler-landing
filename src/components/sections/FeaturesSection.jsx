@@ -26,38 +26,6 @@ const FeaturesSection = () => {
     return () => ctx.revert();
   }, []);
 
-  const features = [
-    {
-      title: '2D Visualization',
-      description: 'Watch your code come to life with real-time 2D animations of data structures, algorithms, and execution flow.',
-      icon: (
-        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-          <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
-          <circle cx="12" cy="12" r="3"/>
-        </svg>
-      ),
-    },
-    {
-      title: 'AI-Powered Hints',
-      description: "Get contextual help when you're stuck—smart hints guide you without giving away the full solution.",
-      icon: (
-        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-          <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
-        </svg>
-      ),
-    },
-    {
-      title: 'Multi-Language Support',
-      description: 'Code in Python, Java, C++, JavaScript, or C with full syntax highlighting and execution support.',
-      icon: (
-        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-          <polyline points="16 18 22 12 16 6"/>
-          <polyline points="8 6 2 12 8 18"/>
-        </svg>
-      ),
-    },
-  ];
-
   return (
     <section
       ref={sectionRef}
@@ -69,15 +37,9 @@ const FeaturesSection = () => {
         overflow: 'hidden',
       }}
     >
-      <div style={{
-        maxWidth: '1200px',
-        margin: '0 auto',
-      }}>
+      <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
         {/* Section Header */}
-        <div style={{
-          textAlign: 'center',
-          marginBottom: '80px',
-        }}>
+        <div style={{ textAlign: 'center', marginBottom: '80px' }}>
           <h2
             style={{
               fontSize: 'clamp(36px, 5vw, 56px)',
@@ -109,74 +71,149 @@ const FeaturesSection = () => {
             gap: '24px',
           }}
         >
-          {features.map((feature, i) => (
+          {/* Card 1 */}
+          <div
+            ref={(el) => (cardsRef.current[0] = el)}
+            style={{
+              background: 'linear-gradient(to bottom, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.01))',
+              border: '1px solid rgba(255, 255, 255, 0.08)',
+              borderRadius: '16px',
+              padding: '40px 32px',
+              transition: 'all 0.3s',
+            }}
+          >
             <div
-              key={i}
-              ref={(el) => (cardsRef.current[i] = el)}
               style={{
-                position: 'relative',
-                background: 'linear-gradient(to bottom, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.01))',
-                border: '1px solid rgba(255, 255, 255, 0.08)',
-                borderRadius: '16px',
-                padding: '40px 32px',
-                transition: 'all 0.3s',
-                cursor: 'default',
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.15)';
-                e.currentTarget.style.transform = 'translateY(-4px)';
-                e.currentTarget.style.background = 'linear-gradient(to bottom, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02))';
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.08)';
-                e.currentTarget.style.transform = 'translateY(0)';
-                e.currentTarget.style.background = 'linear-gradient(to bottom, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.01))';
+                width: '56px',
+                height: '56px',
+                borderRadius: '12px',
+                background: 'rgba(255, 255, 255, 0.05)',
+                border: '1px solid rgba(255, 255, 255, 0.1)',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                marginBottom: '24px',
+                color: '#ffffff',
               }}
             >
-              {/* Icon */}
-              <div
-                style={{
-                  width: '56px',
-                  height: '56px',
-                  borderRadius: '12px',
-                  background: 'rgba(255, 255, 255, 0.05)',
-                  border: '1px solid rgba(255, 255, 255, 0.1)',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  marginBottom: '24px',
-                  color: '#ffffff',
-                }}
-              >
-                {feature.icon}
-              </div>
-
-              {/* Title */}
-              <h3
-                style={{
-                  fontSize: '20px',
-                  fontWeight: '600',
-                  color: '#ffffff',
-                  marginBottom: '12px',
-                  letterSpacing: '-0.01em',
-                }}
-              >
-                {feature.title}
-              </h3>
-
-              {/* Description */}
-              <p
-                style={{
-                  fontSize: '15px',
-                  lineHeight: 1.7,
-                  color: 'rgba(255, 255, 255, 0.5)',
-                  fontWeight: '400',
-                }}
-              >
-                {feature.description}
-              </p>
+              👁️
             </div>
-          ))}
+            <h3
+              style={{
+                fontSize: '20px',
+                fontWeight: '600',
+                color: '#ffffff',
+                marginBottom: '12px',
+              }}
+            >
+              2D Visualization
+            </h3>
+            <p
+              style={{
+                fontSize: '15px',
+                lineHeight: 1.7,
+                color: 'rgba(255, 255, 255, 0.5)',
+              }}
+            >
+              Watch your code come to life with real-time 2D animations of data structures, algorithms, and execution flow.
+            </p>
+          </div>
+
+          {/* Card 2 */}
+          <div
+            ref={(el) => (cardsRef.current[1] = el)}
+            style={{
+              background: 'linear-gradient(to bottom, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.01))',
+              border: '1px solid rgba(255, 255, 255, 0.08)',
+              borderRadius: '16px',
+              padding: '40px 32px',
+              transition: 'all 0.3s',
+            }}
+          >
+            <div
+              style={{
+                width: '56px',
+                height: '56px',
+                borderRadius: '12px',
+                background: 'rgba(255, 255, 255, 0.05)',
+                border: '1px solid rgba(255, 255, 255, 0.1)',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                marginBottom: '24px',
+                color: '#ffffff',
+              }}
+            >
+              ⚡
+            </div>
+            <h3
+              style={{
+                fontSize: '20px',
+                fontWeight: '600',
+                color: '#ffffff',
+                marginBottom: '12px',
+              }}
+            >
+              AI-Powered Hints
+            </h3>
+            <p
+              style={{
+                fontSize: '15px',
+                lineHeight: 1.7,
+                color: 'rgba(255, 255, 255, 0.5)',
+              }}
+            >
+              Get contextual help when you're stuck—smart hints guide you without giving away the full solution.
+            </p>
+          </div>
+
+          {/* Card 3 */}
+          <div
+            ref={(el) => (cardsRef.current[2] = el)}
+            style={{
+              background: 'linear-gradient(to bottom, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.01))',
+              border: '1px solid rgba(255, 255, 255, 0.08)',
+              borderRadius: '16px',
+              padding: '40px 32px',
+              transition: 'all 0.3s',
+            }}
+          >
+            <div
+              style={{
+                width: '56px',
+                height: '56px',
+                borderRadius: '12px',
+                background: 'rgba(255, 255, 255, 0.05)',
+                border: '1px solid rgba(255, 255, 255, 0.1)',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                marginBottom: '24px',
+                color: '#ffffff',
+              }}
+            >
+              💻
+            </div>
+            <h3
+              style={{
+                fontSize: '20px',
+                fontWeight: '600',
+                color: '#ffffff',
+                marginBottom: '12px',
+              }}
+            >
+              Multi-Language Support
+            </h3>
+            <p
+              style={{
+                fontSize: '15px',
+                lineHeight: 1.7,
+                color: 'rgba(255, 255, 255, 0.5)',
+              }}
+            >
+              Code in Python, Java, C++, JavaScript, or C with full syntax highlighting and execution support.
+            </p>
+          </div>
         </div>
       </div>
     </section>
