@@ -1,7 +1,6 @@
 import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { HiEye, HiLightningBolt, HiCode } from 'react-icons/hi';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -12,7 +11,6 @@ const FeaturesSection = () => {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Title entrance
       gsap.from(titleRef.current, {
         opacity: 0,
         y: 30,
@@ -25,7 +23,6 @@ const FeaturesSection = () => {
         },
       });
 
-      // Cards staggered entrance
       cardsRef.current.forEach((card, i) => {
         if (card) {
           gsap.from(card, {
@@ -41,21 +38,12 @@ const FeaturesSection = () => {
             delay: i * 0.1,
           });
 
-          // Hover animation
           card.addEventListener('mouseenter', () => {
-            gsap.to(card, {
-              y: -8,
-              duration: 0.3,
-              ease: 'power2.out',
-            });
+            gsap.to(card, { y: -8, duration: 0.3, ease: 'power2.out' });
           });
 
           card.addEventListener('mouseleave', () => {
-            gsap.to(card, {
-              y: 0,
-              duration: 0.3,
-              ease: 'power2.out',
-            });
+            gsap.to(card, { y: 0, duration: 0.3, ease: 'power2.out' });
           });
         }
       });
@@ -67,22 +55,32 @@ const FeaturesSection = () => {
 
   const features = [
     {
-      icon: HiEye,
+      icon: (
+        <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+        </svg>
+      ),
       title: '2D Visualization',
       description: 'Watch your code come to life with real-time 2D animations of data structures, algorithms, and execution flow.',
-      color: '#3b82f6',
     },
     {
-      icon: HiLightningBolt,
+      icon: (
+        <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M13 10V3L4 14h7v7l9-11h-7z" />
+        </svg>
+      ),
       title: 'AI-Powered Hints',
       description: 'Get contextual help when you\'re stuck—smart hints guide you without giving away the full solution.',
-      color: '#8b5cf6',
     },
     {
-      icon: HiCode,
+      icon: (
+        <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+        </svg>
+      ),
       title: 'Multi-Language Support',
       description: 'Code in Python, Java, C++, JavaScript, or C with full syntax highlighting and execution support.',
-      color: '#10b981',
     },
   ];
 
@@ -93,7 +91,7 @@ const FeaturesSection = () => {
       className="relative bg-black py-32 px-6"
     >
       <div className="max-w-[1200px] mx-auto">
-        {/* Section Title */}
+        {/* Section Title - CENTERED */}
         <div ref={titleRef} className="text-center mb-20">
           <h2 className="text-[48px] md:text-[56px] font-semibold text-white mb-6 tracking-[-0.02em]">
             Built for learning
@@ -109,50 +107,23 @@ const FeaturesSection = () => {
             <div
               key={i}
               ref={el => cardsRef.current[i] = el}
-              className="group relative bg-white/5 hover:bg-white/[0.07] backdrop-blur-sm rounded-2xl p-8 border border-white/10 hover:border-white/20 transition-all duration-300 cursor-pointer"
+              className="group relative bg-white/[0.03] hover:bg-white/[0.05] backdrop-blur-sm rounded-2xl p-10 border border-white/10 hover:border-white/20 transition-all duration-300 cursor-pointer"
             >
-              {/* Glow effect on hover */}
-              <div 
-                className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-xl"
-                style={{ backgroundColor: `${feature.color}15` }}
-              ></div>
-
-              {/* Icon */}
-              <div className="relative mb-6">
-                <div 
-                  className="w-14 h-14 rounded-xl flex items-center justify-center transition-all duration-300"
-                  style={{ 
-                    backgroundColor: `${feature.color}20`,
-                  }}
-                >
-                  <feature.icon 
-                    className="text-3xl transition-transform duration-300 group-hover:scale-110" 
-                    style={{ color: feature.color }}
-                  />
+              {/* Icon - CENTERED */}
+              <div className="flex justify-center mb-8">
+                <div className="w-16 h-16 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-white transition-all duration-300 group-hover:scale-110 group-hover:border-white/20">
+                  {feature.icon}
                 </div>
               </div>
 
-              {/* Content */}
-              <div className="relative">
-                <h3 className="text-[22px] font-semibold text-white mb-3 tracking-tight">
+              {/* Content - CENTERED */}
+              <div className="text-center">
+                <h3 className="text-[20px] font-semibold text-white mb-4 tracking-tight">
                   {feature.title}
                 </h3>
-                <p className="text-[15px] text-white/50 leading-relaxed">
+                <p className="text-[14px] text-white/50 leading-relaxed">
                   {feature.description}
                 </p>
-              </div>
-
-              {/* Arrow indicator */}
-              <div className="relative mt-6 flex items-center gap-2 text-white/40 group-hover:text-white/70 transition-colors">
-                <span className="text-[13px] font-medium">Learn more</span>
-                <svg 
-                  className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" 
-                  fill="none" 
-                  stroke="currentColor" 
-                  viewBox="0 0 24 24"
-                >
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                </svg>
               </div>
             </div>
           ))}
