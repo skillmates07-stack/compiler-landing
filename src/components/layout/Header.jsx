@@ -87,13 +87,13 @@ const Header = () => {
           alignItems: 'center',
           gap: '32px',
         }}>
-          {/* Nav Links */}
+          {/* Nav Links (No Docs) */}
           <nav style={{
             display: 'flex',
             alignItems: 'center',
             gap: '32px',
           }}>
-            {['Features', 'Demo', 'Pricing', 'Docs'].map((item) => (
+            {['Features', 'Demo', 'Pricing'].map((item) => (
               <a
                 key={item}
                 href={`#${item.toLowerCase()}`}
@@ -112,15 +112,14 @@ const Header = () => {
             ))}
           </nav>
 
-          {/* Right Buttons (No Submit) */}
+          {/* Right Buttons */}
           <div style={{
             display: 'flex',
             alignItems: 'center',
             gap: '16px',
           }}>
             {/* Sign in */}
-            <a
-              href="/signin"
+            <button
               style={{
                 background: 'transparent',
                 border: 'none',
@@ -130,17 +129,15 @@ const Header = () => {
                 cursor: 'pointer',
                 padding: '8px 16px',
                 transition: 'color 0.2s',
-                textDecoration: 'none',
               }}
               onMouseEnter={(e) => e.target.style.color = '#ffffff'}
               onMouseLeave={(e) => e.target.style.color = 'rgba(255, 255, 255, 0.7)'}
             >
               Sign in
-            </a>
+            </button>
 
             {/* Create Account */}
-            <a
-              href="/register"
+            <button
               style={{
                 background: '#ffffff',
                 color: '#000000',
@@ -151,8 +148,6 @@ const Header = () => {
                 fontWeight: '600',
                 cursor: 'pointer',
                 transition: 'all 0.2s',
-                textDecoration: 'none',
-                display: 'inline-block',
               }}
               onMouseEnter={(e) => {
                 e.target.style.background = 'rgba(255, 255, 255, 0.9)';
@@ -164,7 +159,7 @@ const Header = () => {
               }}
             >
               Create Account
-            </a>
+            </button>
           </div>
         </div>
       </div>
