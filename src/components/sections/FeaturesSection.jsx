@@ -90,9 +90,10 @@ const FeaturesSection = () => {
       id="features"
       className="relative bg-black py-32 px-6"
     >
-      <div className="max-w-[1200px] mx-auto">
-        {/* Section Title - CENTERED */}
-        <div ref={titleRef} className="text-center mb-20">
+      {/* CENTERED CONTAINER */}
+      <div className="max-w-6xl mx-auto">
+        {/* Section Title - FULLY CENTERED */}
+        <div ref={titleRef} className="text-center mb-20 w-full">
           <h2 className="text-[48px] md:text-[56px] font-semibold text-white mb-6 tracking-[-0.02em]">
             Built for learning
           </h2>
@@ -101,13 +102,13 @@ const FeaturesSection = () => {
           </p>
         </div>
 
-        {/* Features Grid */}
-        <div className="grid md:grid-cols-3 gap-6">
+        {/* Features Grid - CENTERED */}
+        <div className="grid md:grid-cols-3 gap-6 w-full">
           {features.map((feature, i) => (
             <div
               key={i}
               ref={el => cardsRef.current[i] = el}
-              className="group relative bg-white/[0.03] hover:bg-white/[0.05] backdrop-blur-sm rounded-2xl p-10 border border-white/10 hover:border-white/20 transition-all duration-300 cursor-pointer"
+              className="relative bg-white/[0.03] hover:bg-white/[0.05] backdrop-blur-sm rounded-2xl p-10 border border-white/10 hover:border-white/20 transition-all duration-300 cursor-pointer"
             >
               {/* Icon - CENTERED */}
               <div className="flex justify-center mb-8">
