@@ -1,9 +1,11 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Header from '../components/layout/Header';
 
 const SignIn = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -45,7 +47,6 @@ const SignIn = () => {
           </p>
 
           <form onSubmit={handleSubmit}>
-            {/* Email */}
             <div style={{ marginBottom: '16px' }}>
               <label style={{
                 display: 'block',
@@ -75,7 +76,6 @@ const SignIn = () => {
               />
             </div>
 
-            {/* Password */}
             <div style={{ marginBottom: '24px' }}>
               <label style={{
                 display: 'block',
@@ -105,7 +105,6 @@ const SignIn = () => {
               />
             </div>
 
-            {/* Submit Button */}
             <button
               type="submit"
               style={{
@@ -131,16 +130,16 @@ const SignIn = () => {
             textAlign: 'center',
           }}>
             Don't have an account?{' '}
-            <a
-              href="/register"
+            <span
+              onClick={() => navigate('/register')}
               style={{
                 color: '#ffffff',
-                textDecoration: 'none',
                 fontWeight: '600',
+                cursor: 'pointer',
               }}
             >
               Create one
-            </a>
+            </span>
           </p>
         </div>
       </div>
