@@ -35,41 +35,46 @@ const Header = () => {
   return (
     <header 
       ref={headerRef}
-      className="fixed top-0 left-0 right-0 z-50 bg-black/60 backdrop-blur-md border-b border-white/5"
+      className="fixed top-0 left-0 right-0 z-50 bg-black/40 backdrop-blur-lg"
     >
-      <div className="max-w-7xl mx-auto px-6 py-3">
+      <div className="max-w-[1400px] mx-auto px-8 py-5">
         <div className="flex items-center justify-between">
-          {/* Logo - Minimal like Fey */}
-          <div className="flex items-center gap-2 cursor-pointer">
-            <div className="w-7 h-7 bg-white/10 rounded-md flex items-center justify-center hover:bg-white/15 transition-colors duration-200">
-              <FaCode className="text-white/80 text-sm" />
+          {/* Logo - Dark.design style */}
+          <div className="flex items-center gap-2.5 cursor-pointer">
+            <div className="w-7 h-7 bg-white rounded-md flex items-center justify-center hover:scale-105 transition-transform duration-200">
+              <FaCode className="text-black text-sm" />
             </div>
-            <span className="text-base font-medium text-white/90">
+            <span className="text-base font-semibold text-white">
               CodeFlow
             </span>
           </div>
 
-          {/* Desktop Navigation - Minimal */}
-          <nav className="hidden md:flex items-center gap-6">
+          {/* Desktop Navigation - Wide spacing like Dark.design */}
+          <nav className="hidden md:flex items-center gap-10">
             {['Features', 'Demo', 'Pricing', 'Docs'].map((item) => (
               <a
                 key={item}
                 href={`#${item.toLowerCase()}`}
-                className="text-[13px] text-white/50 hover:text-white/90 transition-colors duration-200"
+                className="text-[14px] text-white/70 hover:text-white transition-colors duration-200"
               >
                 {item}
               </a>
             ))}
           </nav>
 
-          {/* CTA Button - Minimal */}
-          <button className="hidden md:block bg-white/10 hover:bg-white/15 text-white/90 px-4 py-1.5 rounded-md text-[13px] font-medium transition-all duration-200 border border-white/10">
-            Get Started
-          </button>
+          {/* Right side buttons - Dark.design style */}
+          <div className="hidden md:flex items-center gap-3">
+            <button className="text-[14px] text-white/70 hover:text-white px-4 py-2 transition-colors duration-200">
+              Sign in
+            </button>
+            <button className="bg-white hover:bg-white/90 text-black px-5 py-2 rounded-lg text-[14px] font-medium transition-all duration-200">
+              Get Started
+            </button>
+          </div>
 
           {/* Mobile Toggle */}
           <button 
-            className="md:hidden text-white/80 text-xl"
+            className="md:hidden text-white text-2xl"
             onClick={() => setIsOpen(!isOpen)}
           >
             {isOpen ? <HiX /> : <HiMenu />}
@@ -78,20 +83,25 @@ const Header = () => {
 
         {/* Mobile Menu */}
         {isOpen && (
-          <nav className="md:hidden mt-3 pb-3 flex flex-col gap-2 border-t border-white/5 pt-3">
+          <nav className="md:hidden mt-4 pb-4 flex flex-col gap-3 border-t border-white/10 pt-4">
             {['Features', 'Demo', 'Pricing', 'Docs'].map((item) => (
               <a
                 key={item}
                 href={`#${item.toLowerCase()}`}
-                className="text-[13px] text-white/50 hover:text-white/90 transition-colors duration-200"
+                className="text-[14px] text-white/70 hover:text-white transition-colors duration-200"
                 onClick={() => setIsOpen(false)}
               >
                 {item}
               </a>
             ))}
-            <button className="bg-white/10 hover:bg-white/15 text-white/90 px-4 py-1.5 rounded-md text-[13px] font-medium w-full mt-2 transition-all duration-200 border border-white/10">
-              Get Started
-            </button>
+            <div className="flex flex-col gap-2 mt-2">
+              <button className="text-[14px] text-white/70 px-4 py-2 text-left">
+                Sign in
+              </button>
+              <button className="bg-white text-black px-5 py-2 rounded-lg text-[14px] font-medium w-full">
+                Get Started
+              </button>
+            </div>
           </nav>
         )}
       </div>
