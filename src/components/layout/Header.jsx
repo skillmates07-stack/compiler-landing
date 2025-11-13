@@ -67,11 +67,12 @@ const Header = () => {
         maxWidth: '1280px',
         margin: '0 auto',
         padding: '16px 32px',
-        display: 'flex',
+        display: 'grid',
+        gridTemplateColumns: '1fr auto 1fr',
         alignItems: 'center',
-        justifyContent: 'space-between',
+        gap: '24px',
       }}>
-        {/* Logo */}
+        {/* Logo - Left */}
         <div 
           onClick={() => navigate('/')}
           style={{
@@ -79,6 +80,7 @@ const Header = () => {
             alignItems: 'center',
             gap: '8px',
             cursor: 'pointer',
+            justifySelf: 'start',
           }}
         >
           <div style={{
@@ -104,11 +106,12 @@ const Header = () => {
           </span>
         </div>
 
-        {/* Nav Links */}
+        {/* Nav Links - Center */}
         <div style={{
           display: 'flex',
           alignItems: 'center',
-          gap: '32px',
+          gap: '40px',
+          justifySelf: 'center',
         }}>
           <button
             onClick={() => scrollToSection('features')}
@@ -120,6 +123,7 @@ const Header = () => {
               fontWeight: '500',
               cursor: 'pointer',
               transition: 'color 0.2s',
+              padding: 0,
             }}
             onMouseEnter={(e) => e.target.style.color = '#ffffff'}
             onMouseLeave={(e) => e.target.style.color = 'rgba(255, 255, 255, 0.7)'}
@@ -137,6 +141,7 @@ const Header = () => {
               fontWeight: '500',
               cursor: 'pointer',
               transition: 'color 0.2s',
+              padding: 0,
             }}
             onMouseEnter={(e) => e.target.style.color = '#ffffff'}
             onMouseLeave={(e) => e.target.style.color = 'rgba(255, 255, 255, 0.7)'}
@@ -154,6 +159,7 @@ const Header = () => {
               fontWeight: '500',
               cursor: 'pointer',
               transition: 'color 0.2s',
+              padding: 0,
             }}
             onMouseEnter={(e) => e.target.style.color = '#ffffff'}
             onMouseLeave={(e) => e.target.style.color = 'rgba(255, 255, 255, 0.7)'}
@@ -162,11 +168,12 @@ const Header = () => {
           </button>
         </div>
 
-        {/* Auth Buttons */}
+        {/* Auth Buttons - Right */}
         <div style={{
           display: 'flex',
           alignItems: 'center',
-          gap: '16px',
+          gap: '12px',
+          justifySelf: 'end',
         }}>
           <button
             onClick={() => navigate('/signin')}
@@ -192,7 +199,7 @@ const Header = () => {
               background: '#ffffff',
               color: '#000000',
               border: 'none',
-              padding: '8px 16px',
+              padding: '8px 20px',
               borderRadius: '6px',
               fontSize: '14px',
               fontWeight: '600',
