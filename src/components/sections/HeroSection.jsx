@@ -108,7 +108,7 @@ const HeroSection = () => {
             gap: '12px',
             justifyContent: 'center',
             alignItems: 'center',
-            marginBottom: '120px',
+            marginBottom: '80px',
             flexWrap: 'wrap',
           }}
         >
@@ -206,3 +206,4 @@ const HeroSection = () => {
 };
 
 export default HeroSection;
+
