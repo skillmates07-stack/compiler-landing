@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import { FaCode } from 'react-icons/fa';
-import { HiMenuAlt3, HiX } from 'react-icons/hi';
+import { HiMenu, HiX } from 'react-icons/hi';
 
 const Header = () => {
   const headerRef = useRef(null);
@@ -9,83 +9,71 @@ const Header = () => {
 
   useEffect(() => {
     gsap.from(headerRef.current, {
-      y: -100,
+      y: -20,
       opacity: 0,
-      duration: 1,
-      ease: 'power3.out',
+      duration: 0.6,
+      ease: 'power2.out',
     });
-
-    let lastScroll = 0;
-    const handleScroll = () => {
-      const currentScroll = window.pageYOffset;
-      
-      if (currentScroll > lastScroll && currentScroll > 100) {
-        gsap.to(headerRef.current, { y: -100, duration: 0.3 });
-      } else {
-        gsap.to(headerRef.current, { y: 0, duration: 0.3 });
-      }
-      
-      lastScroll = currentScroll;
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   return (
     <header 
       ref={headerRef}
-      className="fixed top-0 left-0 right-0 z-50 bg-[#0a0a0a]/80 backdrop-blur-lg border-b border-[#333]"
+      className="fixed top-0 left-0 right-0 z-50 bg-black/80 backdrop-blur-xl border-b border-[#1f1f1f]"
     >
-      <div className="container mx-auto px-6 py-4">
+      <div className="max-w-7xl mx-auto px-8 py-4">
         <div className="flex items-center justify-between">
-          <div className="flex items-center gap-3 group cursor-pointer">
-            <div className="w-10 h-10 bg-[#3b82f6] rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform">
-              <FaCode className="text-white text-xl" />
+          {/* Logo */}
+          <div className="flex items-center gap-2">
+            <div className="w-8 h-8 bg-[#00a8ff] rounded-md flex items-center justify-center">
+              <FaCode className="text-white text-sm" />
             </div>
-            <span className="text-2xl font-bold text-white">
-              Code<span className="text-[#3b82f6]">Flow</span>
+            <span className="text-lg font-semibold text-white">
+              CodeFlow
             </span>
           </div>
 
+          {/* Desktop Nav */}
           <nav className="hidden md:flex items-center gap-8">
             {['Features', 'Demo', 'Pricing', 'Docs'].map((item) => (
               <a
                 key={item}
                 href={`#${item.toLowerCase()}`}
-                className="text-gray-400 hover:text-white transition-colors relative group"
+                className="text-[14px] text-[#a0a0a0] hover:text-white transition-colors duration-200"
               >
                 {item}
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#3b82f6] group-hover:w-full transition-all duration-300"></span>
               </a>
             ))}
           </nav>
 
-          <button className="hidden md:block bg-[#3b82f6] hover:bg-[#2563eb] text-white px-6 py-2.5 rounded-full font-semibold transition-all">
+          {/* CTA */}
+          <button className="hidden md:block bg-[#00a8ff] hover:bg-[#0088cc] text-white px-5 py-2 rounded-lg text-[14px] font-medium transition-all duration-200">
             Get Started
           </button>
 
+          {/* Mobile Toggle */}
           <button 
-            className="md:hidden text-white text-3xl"
+            className="md:hidden text-white text-2xl"
             onClick={() => setIsOpen(!isOpen)}
           >
-            {isOpen ? <HiX /> : <HiMenuAlt3 />}
+            {isOpen ? <HiX /> : <HiMenu />}
           </button>
         </div>
 
+        {/* Mobile Menu */}
         {isOpen && (
-          <nav className="md:hidden mt-6 pb-4 flex flex-col gap-4">
+          <nav className="md:hidden mt-4 pb-4 flex flex-col gap-3 border-t border-[#1f1f1f] pt-4">
             {['Features', 'Demo', 'Pricing', 'Docs'].map((item) => (
               <a
                 key={item}
                 href={`#${item.toLowerCase()}`}
-                className="text-gray-400 hover:text-white transition-colors text-lg"
+                className="text-[14px] text-[#a0a0a0] hover:text-white transition-colors"
                 onClick={() => setIsOpen(false)}
               >
                 {item}
               </a>
             ))}
-            <button className="bg-[#3b82f6] text-white px-6 py-2.5 rounded-full font-semibold w-full mt-2">
+            <button className="bg-[#00a8ff] text-white px-5 py-2 rounded-lg text-[14px] font-medium w-full mt-2">
               Get Started
             </button>
           </nav>
