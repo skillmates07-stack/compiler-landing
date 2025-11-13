@@ -8,7 +8,6 @@ const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
-    // Header entrance animation
     gsap.from(headerRef.current, {
       y: -100,
       opacity: 0,
@@ -16,7 +15,6 @@ const Header = () => {
       ease: 'power3.out',
     });
 
-    // Scroll behavior - hide on scroll down, show on scroll up
     let lastScroll = 0;
     const handleScroll = () => {
       const currentScroll = window.pageYOffset;
@@ -37,21 +35,19 @@ const Header = () => {
   return (
     <header 
       ref={headerRef}
-      className="fixed top-0 left-0 right-0 z-50 bg-dark-bg/80 backdrop-blur-lg border-b border-dark-border"
+      className="fixed top-0 left-0 right-0 z-50 bg-[#0a0a0a]/80 backdrop-blur-lg border-b border-[#333]"
     >
       <div className="container mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
-          {/* Logo */}
           <div className="flex items-center gap-3 group cursor-pointer">
-            <div className="w-10 h-10 bg-primary-500 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform">
+            <div className="w-10 h-10 bg-[#3b82f6] rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform">
               <FaCode className="text-white text-xl" />
             </div>
             <span className="text-2xl font-bold text-white">
-              Code<span className="text-primary-500">Flow</span>
+              Code<span className="text-[#3b82f6]">Flow</span>
             </span>
           </div>
 
-          {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center gap-8">
             {['Features', 'Demo', 'Pricing', 'Docs'].map((item) => (
               <a
@@ -60,17 +56,15 @@ const Header = () => {
                 className="text-gray-400 hover:text-white transition-colors relative group"
               >
                 {item}
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary-500 group-hover:w-full transition-all duration-300"></span>
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#3b82f6] group-hover:w-full transition-all duration-300"></span>
               </a>
             ))}
           </nav>
 
-          {/* CTA Button */}
-          <button className="hidden md:block bg-primary-500 hover:bg-primary-600 text-white px-6 py-2.5 rounded-full font-semibold transition-all hover:shadow-glow">
+          <button className="hidden md:block bg-[#3b82f6] hover:bg-[#2563eb] text-white px-6 py-2.5 rounded-full font-semibold transition-all">
             Get Started
           </button>
 
-          {/* Mobile Menu Toggle */}
           <button 
             className="md:hidden text-white text-3xl"
             onClick={() => setIsOpen(!isOpen)}
@@ -79,7 +73,6 @@ const Header = () => {
           </button>
         </div>
 
-        {/* Mobile Menu */}
         {isOpen && (
           <nav className="md:hidden mt-6 pb-4 flex flex-col gap-4">
             {['Features', 'Demo', 'Pricing', 'Docs'].map((item) => (
@@ -92,7 +85,7 @@ const Header = () => {
                 {item}
               </a>
             ))}
-            <button className="bg-primary-500 text-white px-6 py-2.5 rounded-full font-semibold w-full mt-2">
+            <button className="bg-[#3b82f6] text-white px-6 py-2.5 rounded-full font-semibold w-full mt-2">
               Get Started
             </button>
           </nav>
