@@ -20,20 +20,20 @@ const HeroSection = () => {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Master timeline for orchestrated entrance
+      // Master timeline
       const masterTL = gsap.timeline({ 
         defaults: { ease: 'power3.out' },
         delay: 0.3 
       });
 
-      // Split title into words for character-by-character animation
+      // Split title into words
       const titleWords = titleRef.current.querySelectorAll('span');
       const subtitleChars = subtitleRef.current.textContent.split('');
       subtitleRef.current.innerHTML = subtitleChars
         .map(char => `<span class="inline-block">${char === ' ' ? '&nbsp;' : char}</span>`)
         .join('');
 
-      // Title entrance with elastic effect
+      // Entrance animations
       masterTL.from(titleRef.current, {
         opacity: 0,
         scale: 0.8,
@@ -49,8 +49,6 @@ const HeroSection = () => {
         duration: 0.8,
         ease: 'back.out(1.7)',
       }, '-=0.9')
-      
-      // Subtitle character reveal
       .from(subtitleRef.current.querySelectorAll('span'), {
         opacity: 0,
         y: 20,
@@ -59,8 +57,6 @@ const HeroSection = () => {
         duration: 0.6,
         ease: 'power2.out',
       }, '-=0.4')
-      
-      // CTA buttons with magnetic effect setup
       .from(ctaRef.current.children, {
         opacity: 0,
         y: 50,
@@ -70,8 +66,6 @@ const HeroSection = () => {
         duration: 0.8,
         ease: 'elastic.out(1, 0.5)',
       }, '-=0.3')
-      
-      // Stats counter animation
       .from(statsRef.current.children, {
         opacity: 0,
         scale: 0,
@@ -81,8 +75,6 @@ const HeroSection = () => {
         ease: 'back.out(2)',
         onComplete: () => animateCounters(),
       }, '-=0.4')
-      
-      // Floating icons with physics-based entrance
       .from(floatingIconsRef.current, {
         opacity: 0,
         y: 200,
@@ -96,10 +88,9 @@ const HeroSection = () => {
         ease: 'elastic.out(1, 0.4)',
       }, '-=0.6');
 
-      // Continuous floating animation for icons
+      // Floating icons animation
       floatingIconsRef.current.forEach((icon, i) => {
         const floatTL = gsap.timeline({ repeat: -1, yoyo: true });
-        
         floatTL.to(icon, {
           y: -20 + (i * 3),
           x: Math.sin(i) * 10,
@@ -108,8 +99,7 @@ const HeroSection = () => {
           ease: 'sine.inOut',
         });
 
-        // Magnetic hover effect
-        icon.addEventListener('mouseenter', (e) => {
+        icon.addEventListener('mouseenter', () => {
           gsap.to(icon, {
             scale: 1.3,
             rotation: 360,
@@ -128,7 +118,7 @@ const HeroSection = () => {
         });
       });
 
-      // Background orbs parallax movement
+      // Orbs parallax
       gsap.to(orbRef1.current, {
         x: -50,
         y: 50,
@@ -149,7 +139,7 @@ const HeroSection = () => {
         ease: 'sine.inOut',
       });
 
-      // Animated grid background
+      // Grid animation
       gsap.to(gridRef.current, {
         backgroundPosition: '100px 100px',
         duration: 30,
@@ -157,7 +147,7 @@ const HeroSection = () => {
         ease: 'none',
       });
 
-      // CTA button magnetic effect
+      // Magnetic buttons
       const buttons = ctaRef.current.querySelectorAll('button');
       buttons.forEach(button => {
         button.addEventListener('mousemove', (e) => {
@@ -183,7 +173,7 @@ const HeroSection = () => {
         });
       });
 
-      // Parallax scroll effect
+      // Parallax scroll
       ScrollTrigger.create({
         trigger: heroRef.current,
         start: 'top top',
@@ -221,7 +211,6 @@ const HeroSection = () => {
     return () => ctx.revert();
   }, []);
 
-  // Counter animation function
   const animateCounters = () => {
     const stats = statsRef.current.querySelectorAll('.stat-value');
     stats.forEach((stat) => {
@@ -251,16 +240,16 @@ const HeroSection = () => {
   return (
     <section 
       ref={heroRef}
-      className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20"
+      className="relative min-h-screen flex items-center justify-center overflow-hidden pt-24 pb-16"
     >
-      {/* Animated background layers */}
+      {/* Background layers */}
       <div className="absolute inset-0 bg-gradient-to-b from-[#0a0a0a] via-[#1a1a1a]/50 to-[#0a0a0a]"></div>
       <div 
         ref={gridRef}
         className="absolute inset-0 bg-grid-pattern opacity-20"
       ></div>
       
-      {/* Animated glowing orbs with parallax */}
+      {/* Glowing orbs */}
       <div 
         ref={orbRef1}
         className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-[#3b82f6]/20 rounded-full blur-[120px] pointer-events-none"
@@ -270,7 +259,7 @@ const HeroSection = () => {
         className="absolute bottom-1/4 right-1/4 w-[600px] h-[600px] bg-purple-500/20 rounded-full blur-[120px] pointer-events-none"
       ></div>
 
-      {/* Noise texture overlay */}
+      {/* Noise texture */}
       <div className="absolute inset-0 opacity-[0.015] mix-blend-overlay pointer-events-none"
         style={{
           backgroundImage: 'url("data:image/svg+xml,%3Csvg viewBox=\'0 0 400 400\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cfilter id=\'noiseFilter\'%3E%3CfeTurbulence type=\'fractalNoise\' baseFrequency=\'4\' numOctaves=\'4\' /%3E%3C/filter%3E%3Crect width=\'100%25\' height=\'100%25\' filter=\'url(%23noiseFilter)\' /%3E%3C/svg%3E")',
@@ -278,11 +267,11 @@ const HeroSection = () => {
       ></div>
 
       <div className="container mx-auto px-6 relative z-10">
-        <div className="max-w-6xl mx-auto text-center">
-          {/* Main heading with word splitting */}
+        <div className="max-w-5xl mx-auto text-center">
+          {/* Main heading - Professional sizing: 56-64px desktop */}
           <h1 
             ref={titleRef} 
-            className="text-5xl md:text-7xl lg:text-8xl font-black mb-8 leading-[1.1] tracking-tight"
+            className="text-[56px] md:text-[64px] font-extrabold mb-6 leading-[1.1] tracking-tight"
           >
             <span className="inline-block">Code</span>{' '}
             <span className="inline-block">online</span>{' '}
@@ -291,79 +280,74 @@ const HeroSection = () => {
             <span className="inline-block gradient-text">Intelligence</span>
           </h1>
 
-          {/* Subtitle with character animation */}
+          {/* Subtitle - Professional sizing: 18-20px */}
           <p 
             ref={subtitleRef}
-            className="text-xl md:text-2xl text-gray-400 mb-14 max-w-4xl mx-auto leading-relaxed font-medium"
+            className="text-[18px] md:text-[20px] text-gray-400 mb-10 max-w-3xl mx-auto leading-[1.6] font-normal"
           >
             Master programming through 2D visualization, AI-powered hints, and interactive learning across 5+ languages
           </p>
 
-          {/* CTA Buttons with magnetic effect */}
-          <div ref={ctaRef} className="flex flex-col sm:flex-row gap-6 justify-center mb-20">
-            <button className="group relative bg-gradient-to-r from-[#3b82f6] to-[#2563eb] text-white px-10 py-5 rounded-full text-lg font-bold transition-all overflow-hidden shadow-[0_0_50px_rgba(59,130,246,0.4)] hover:shadow-[0_0_80px_rgba(59,130,246,0.6)]">
-              <span className="relative z-10 flex items-center justify-center gap-3">
-                <HiLightningBolt className="text-2xl group-hover:rotate-12 transition-transform" />
+          {/* CTA Buttons - Professional sizing: 16px text, proper padding */}
+          <div ref={ctaRef} className="flex flex-col sm:flex-row gap-4 justify-center mb-16">
+            <button className="group relative bg-gradient-to-r from-[#3b82f6] to-[#2563eb] text-white px-7 py-3.5 rounded-full text-[16px] font-semibold transition-all overflow-hidden shadow-[0_0_50px_rgba(59,130,246,0.4)] hover:shadow-[0_0_80px_rgba(59,130,246,0.6)]">
+              <span className="relative z-10 flex items-center justify-center gap-2">
+                <HiLightningBolt className="text-xl group-hover:rotate-12 transition-transform" />
                 Start Learning Free
               </span>
               <div className="absolute inset-0 bg-gradient-to-r from-[#2563eb] to-purple-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-              
-              {/* Shimmer effect */}
               <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 bg-gradient-to-r from-transparent via-white/20 to-transparent"></div>
             </button>
             
-            <button className="group relative border-2 border-[#3b82f6] text-white hover:bg-[#3b82f6]/10 px-10 py-5 rounded-full text-lg font-bold transition-all backdrop-blur-sm">
-              <span className="flex items-center justify-center gap-3">
-                <HiSparkles className="text-2xl group-hover:rotate-180 transition-transform duration-500" />
+            <button className="group relative border-2 border-[#3b82f6] text-white hover:bg-[#3b82f6]/10 px-7 py-3.5 rounded-full text-[16px] font-semibold transition-all backdrop-blur-sm">
+              <span className="flex items-center justify-center gap-2">
+                <HiSparkles className="text-xl group-hover:rotate-180 transition-transform duration-500" />
                 Watch Demo
               </span>
             </button>
           </div>
 
-          {/* Animated stats with counter */}
-          <div ref={statsRef} className="flex flex-wrap justify-center gap-12 mb-24">
+          {/* Stats - Professional sizing: 36-40px numbers */}
+          <div ref={statsRef} className="flex flex-wrap justify-center gap-12 mb-16">
             {[
               { value: '50K+', label: 'Active Learners' },
               { value: '1M+', label: 'Code Visualizations' },
               { value: '5+', label: 'Languages' },
             ].map((stat, i) => (
               <div key={i} className="text-center group">
-                <div className="stat-value text-5xl md:text-6xl font-black bg-gradient-to-r from-[#3b82f6] to-purple-500 bg-clip-text text-transparent group-hover:scale-110 transition-transform duration-300">
+                <div className="stat-value text-[40px] font-black bg-gradient-to-r from-[#3b82f6] to-purple-500 bg-clip-text text-transparent group-hover:scale-110 transition-transform duration-300">
                   {stat.value}
                 </div>
-                <div className="text-gray-400 text-sm mt-2 font-medium uppercase tracking-wider">
+                <div className="text-gray-500 text-[11px] mt-1.5 font-medium uppercase tracking-[0.15em]">
                   {stat.label}
                 </div>
               </div>
             ))}
           </div>
 
-          {/* Floating language icons with advanced hover effects */}
-          <div className="flex justify-center gap-8 flex-wrap">
+          {/* Language icons - Professional sizing: 64px containers */}
+          <div className="flex justify-center gap-5 flex-wrap">
             {languages.map((lang, i) => (
               <div
                 key={lang.name}
                 ref={el => floatingIconsRef.current[i] = el}
-                className="group relative w-24 h-24 bg-gradient-to-br from-[#1a1a1a] to-[#252525] rounded-2xl flex items-center justify-center border border-[#333] hover:border-[#3b82f6] transition-all cursor-pointer overflow-hidden"
+                className="group relative w-16 h-16 bg-gradient-to-br from-[#1a1a1a] to-[#252525] rounded-xl flex items-center justify-center border border-[#333] hover:border-[#3b82f6] transition-all cursor-pointer overflow-hidden"
                 style={{
                   boxShadow: `0 10px 40px -10px ${lang.bgGlow}`,
                 }}
               >
-                {/* Glow effect on hover */}
                 <div 
                   className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-xl"
                   style={{ backgroundColor: lang.bgGlow }}
                 ></div>
                 
-                <lang.Icon className={`text-5xl ${lang.color} relative z-10 group-hover:scale-125 transition-transform duration-300 drop-shadow-[0_0_10px_currentColor]`} />
+                <lang.Icon className={`text-3xl ${lang.color} relative z-10 group-hover:scale-125 transition-transform duration-300 drop-shadow-[0_0_10px_currentColor]`} />
                 
-                {/* Tooltip */}
-                <div className="absolute -bottom-10 left-1/2 -translate-x-1/2 text-xs font-semibold text-white bg-[#1a1a1a] px-3 py-1.5 rounded-lg opacity-0 group-hover:opacity-100 transition-all duration-300 whitespace-nowrap border border-[#333] group-hover:-translate-y-2">
+                <div className="absolute -bottom-9 left-1/2 -translate-x-1/2 text-[11px] font-semibold text-white bg-[#1a1a1a] px-2.5 py-1 rounded-md opacity-0 group-hover:opacity-100 transition-all duration-300 whitespace-nowrap border border-[#333] group-hover:-translate-y-1">
                   {lang.name}
-                  <div className="absolute -top-1 left-1/2 -translate-x-1/2 w-2 h-2 bg-[#1a1a1a] border-l border-t border-[#333] rotate-45"></div>
+                  <div className="absolute -top-0.5 left-1/2 -translate-x-1/2 w-1.5 h-1.5 bg-[#1a1a1a] border-l border-t border-[#333] rotate-45"></div>
                 </div>
 
-                {/* Particle effect */}
                 <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity">
                   {[...Array(3)].map((_, pi) => (
                     <div
@@ -384,10 +368,10 @@ const HeroSection = () => {
       </div>
 
       {/* Scroll indicator */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-60 hover:opacity-100 transition-opacity cursor-pointer">
-        <span className="text-sm text-gray-400 font-medium uppercase tracking-wider">Scroll</span>
-        <div className="w-6 h-10 border-2 border-[#3b82f6] rounded-full flex justify-center p-2">
-          <div className="w-1 h-2 bg-[#3b82f6] rounded-full animate-bounce"></div>
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-50 hover:opacity-100 transition-opacity cursor-pointer">
+        <span className="text-[10px] text-gray-500 font-medium uppercase tracking-[0.2em]">Scroll</span>
+        <div className="w-5 h-8 border-2 border-[#3b82f6]/50 rounded-full flex justify-center p-1.5">
+          <div className="w-1 h-1.5 bg-[#3b82f6] rounded-full animate-bounce"></div>
         </div>
       </div>
     </section>
