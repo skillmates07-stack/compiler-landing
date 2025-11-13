@@ -64,13 +64,14 @@ const Header = () => {
       }}
     >
       <nav style={{
-        maxWidth: '1280px',
+        maxWidth: '1400px',
         margin: '0 auto',
-        padding: '16px 32px',
+        padding: '0 32px',
+        height: '64px',
         display: 'grid',
         gridTemplateColumns: '1fr auto 1fr',
         alignItems: 'center',
-        gap: '24px',
+        gap: '32px',
       }}>
         {/* Logo - Left */}
         <div 
@@ -84,23 +85,23 @@ const Header = () => {
           }}
         >
           <div style={{
-            width: '32px',
-            height: '32px',
+            width: '28px',
+            height: '28px',
             background: '#ffffff',
-            borderRadius: '6px',
+            borderRadius: '4px',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
           }}>
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#000000" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <polyline points="16 18 22 12 16 6" />
-              <polyline points="8 6 2 12 8 18" />
+            <svg width="16" height="16" fill="#000000" viewBox="0 0 24 24">
+              <path d="M9 4.804A7.968 7.968 0 0 0 5.5 4c-1.255 0-2.443.29-3.5.804v10A7.969 7.969 0 0 1 5.5 14c1.669 0 3.218.51 4.5 1.385A7.962 7.962 0 0 1 14.5 14c1.255 0 2.443.29 3.5.804v-10A7.968 7.968 0 0 0 14.5 4c-1.255 0-2.443.29-3.5.804V19a1 1 0 1 1-2 0V4.804Z"/>
             </svg>
           </div>
           <span style={{
             fontSize: '18px',
             fontWeight: '700',
             color: '#ffffff',
+            letterSpacing: '-0.01em',
           }}>
             CodeFlow
           </span>
@@ -113,59 +114,26 @@ const Header = () => {
           gap: '40px',
           justifySelf: 'center',
         }}>
-          <button
-            onClick={() => scrollToSection('features')}
-            style={{
-              background: 'transparent',
-              border: 'none',
-              color: 'rgba(255, 255, 255, 0.7)',
-              fontSize: '14px',
-              fontWeight: '500',
-              cursor: 'pointer',
-              transition: 'color 0.2s',
-              padding: 0,
-            }}
-            onMouseEnter={(e) => e.target.style.color = '#ffffff'}
-            onMouseLeave={(e) => e.target.style.color = 'rgba(255, 255, 255, 0.7)'}
-          >
-            Features
-          </button>
-
-          <button
-            onClick={() => scrollToSection('demo')}
-            style={{
-              background: 'transparent',
-              border: 'none',
-              color: 'rgba(255, 255, 255, 0.7)',
-              fontSize: '14px',
-              fontWeight: '500',
-              cursor: 'pointer',
-              transition: 'color 0.2s',
-              padding: 0,
-            }}
-            onMouseEnter={(e) => e.target.style.color = '#ffffff'}
-            onMouseLeave={(e) => e.target.style.color = 'rgba(255, 255, 255, 0.7)'}
-          >
-            Demo
-          </button>
-
-          <button
-            onClick={() => scrollToSection('pricing')}
-            style={{
-              background: 'transparent',
-              border: 'none',
-              color: 'rgba(255, 255, 255, 0.7)',
-              fontSize: '14px',
-              fontWeight: '500',
-              cursor: 'pointer',
-              transition: 'color 0.2s',
-              padding: 0,
-            }}
-            onMouseEnter={(e) => e.target.style.color = '#ffffff'}
-            onMouseLeave={(e) => e.target.style.color = 'rgba(255, 255, 255, 0.7)'}
-          >
-            Pricing
-          </button>
+          {['Features', 'Demo', 'Pricing'].map((item) => (
+            <button
+              key={item}
+              onClick={() => scrollToSection(item.toLowerCase())}
+              style={{
+                background: 'transparent',
+                border: 'none',
+                fontSize: '14px',
+                color: 'rgba(255, 255, 255, 0.7)',
+                fontWeight: '500',
+                cursor: 'pointer',
+                padding: 0,
+                transition: 'color 0.2s',
+              }}
+              onMouseEnter={(e) => e.target.style.color = '#ffffff'}
+              onMouseLeave={(e) => e.target.style.color = 'rgba(255, 255, 255, 0.7)'}
+            >
+              {item}
+            </button>
+          ))}
         </div>
 
         {/* Auth Buttons - Right */}
