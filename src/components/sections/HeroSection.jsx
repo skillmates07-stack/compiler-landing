@@ -112,7 +112,7 @@ const HeroSection = () => {
             gap: '12px',
             justifyContent: 'center',
             alignItems: 'center',
-            marginBottom: '80px',
+            marginBottom: '60px',  // Changed from 80px - moves stats up
             flexWrap: 'wrap',
           }}
         >
@@ -140,7 +140,7 @@ const HeroSection = () => {
           >
             Get Started
           </button>
-
+        
           <button
             style={{
               border: '1px solid rgba(255, 255, 255, 0.15)',
@@ -214,3 +214,4 @@ const HeroSection = () => {
 };
 
 export default HeroSection;
+
