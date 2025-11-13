@@ -12,7 +12,6 @@ const HeroSection = () => {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Simple fade-in on load
       gsap.from(contentRef.current.children, {
         opacity: 0,
         y: 20,
@@ -22,7 +21,6 @@ const HeroSection = () => {
         delay: 0.2,
       });
 
-      // Parallax on scroll
       ScrollTrigger.create({
         trigger: heroRef.current,
         start: 'top top',
@@ -42,11 +40,11 @@ const HeroSection = () => {
   }, []);
 
   const languages = [
-    { Icon: FaPython, name: 'Python', color: '#3776ab' },
-    { Icon: FaJava, name: 'Java', color: '#f89820' },
-    { Icon: SiCplusplus, name: 'C++', color: '#00599c' },
-    { Icon: FaJs, name: 'JavaScript', color: '#f7df1e' },
-    { Icon: SiC, name: 'C', color: '#a8b9cc' },
+    { Icon: FaPython, name: 'Python', color: '#ffffff' },
+    { Icon: FaJava, name: 'Java', color: '#ffffff' },
+    { Icon: SiCplusplus, name: 'C++', color: '#ffffff' },
+    { Icon: FaJs, name: 'JavaScript', color: '#ffffff' },
+    { Icon: SiC, name: 'C', color: '#ffffff' },
   ];
 
   return (
@@ -59,65 +57,40 @@ const HeroSection = () => {
         alignItems: 'center',
         justifyContent: 'center',
         background: '#000000',
-        padding: '120px 24px 80px 24px',
+        padding: '100px 40px 60px 40px',
         overflow: 'hidden',
       }}
     >
-      {/* Gradient orbs */}
+      {/* Subtle grid pattern (Dark.design style) */}
       <div style={{
         position: 'absolute',
-        top: '20%',
-        left: '5%',
-        width: '600px',
-        height: '600px',
-        background: 'radial-gradient(circle, rgba(59, 130, 246, 0.1), transparent 70%)',
-        filter: 'blur(80px)',
+        inset: 0,
+        backgroundImage: 'linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px)',
+        backgroundSize: '80px 80px',
+        opacity: 0.3,
         pointerEvents: 'none',
       }}></div>
-
-      <div style={{
-        position: 'absolute',
-        bottom: '10%',
-        right: '5%',
-        width: '500px',
-        height: '500px',
-        background: 'radial-gradient(circle, rgba(139, 92, 246, 0.1), transparent 70%)',
-        filter: 'blur(70px)',
-        pointerEvents: 'none',
-      }}></div>
-
-      {/* Noise texture */}
-      <div
-        style={{
-          position: 'absolute',
-          inset: 0,
-          opacity: 0.02,
-          pointerEvents: 'none',
-          backgroundImage:
-            'url("data:image/svg+xml,%3Csvg viewBox=\'0 0 400 400\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cfilter id=\'n\'%3E%3CfeTurbulence type=\'fractalNoise\' baseFrequency=\'1\' /%3E%3C/filter%3E%3Crect width=\'100%25\' height=\'100%25\' filter=\'url(%23n)\' /%3E%3C/svg%3E")',
-        }}
-      ></div>
 
       <div
         ref={contentRef}
         style={{
           position: 'relative',
           zIndex: 10,
-          maxWidth: '1100px',
+          maxWidth: '1300px',
           margin: '0 auto',
           textAlign: 'center',
           width: '100%',
         }}
       >
-        {/* Title */}
+        {/* Title - Wider */}
         <h1
           style={{
-            fontSize: 'clamp(40px, 5.5vw, 70px)',
+            fontSize: 'clamp(44px, 6vw, 76px)',
             fontWeight: '700',
             lineHeight: 1.1,
             letterSpacing: '-0.03em',
             color: '#ffffff',
-            marginBottom: '4px',
+            marginBottom: '2px',
           }}
         >
           Code online with
@@ -125,32 +98,32 @@ const HeroSection = () => {
 
         <h1
           style={{
-            fontSize: 'clamp(40px, 5.5vw, 70px)',
+            fontSize: 'clamp(44px, 6vw, 76px)',
             fontWeight: '700',
             lineHeight: 1.1,
             letterSpacing: '-0.03em',
-            color: 'rgba(255, 255, 255, 0.5)',
-            marginBottom: '24px',
+            color: 'rgba(255, 255, 255, 0.4)',
+            marginBottom: '20px',
           }}
         >
           Visual Intelligence
         </h1>
 
-        {/* Subtitle */}
+        {/* Subtitle - Compact */}
         <p
           style={{
-            fontSize: 'clamp(15px, 2vw, 18px)',
-            lineHeight: 1.6,
-            color: 'rgba(255, 255, 255, 0.4)',
-            maxWidth: '650px',
-            margin: '0 auto 36px auto',
+            fontSize: 'clamp(15px, 1.8vw, 18px)',
+            lineHeight: 1.5,
+            color: 'rgba(255, 255, 255, 0.35)',
+            maxWidth: '700px',
+            margin: '0 auto 32px auto',
             fontWeight: '400',
           }}
         >
           Master programming through 2D visualization, AI-powered hints, and interactive learning across 5+ languages
         </p>
 
-        {/* CTA Buttons */}
+        {/* CTA Buttons - Dark.design style */}
         <div
           style={{
             display: 'flex',
@@ -158,7 +131,7 @@ const HeroSection = () => {
             gap: '12px',
             justifyContent: 'center',
             alignItems: 'center',
-            marginBottom: '80px',
+            marginBottom: '64px',
             flexWrap: 'wrap',
           }}
         >
@@ -166,16 +139,15 @@ const HeroSection = () => {
             style={{
               background: '#ffffff',
               color: '#000000',
-              padding: '14px 28px',
-              borderRadius: '10px',
-              fontSize: '15px',
+              padding: '12px 24px',
+              borderRadius: '6px',
+              fontSize: '14px',
               fontWeight: '600',
               border: 'none',
               cursor: 'pointer',
-              boxShadow: '0 8px 32px rgba(255, 255, 255, 0.08)',
-              transition: 'all 0.3s',
+              transition: 'all 0.2s',
             }}
-            onMouseEnter={(e) => e.target.style.transform = 'translateY(-2px)'}
+            onMouseEnter={(e) => e.target.style.transform = 'translateY(-1px)'}
             onMouseLeave={(e) => e.target.style.transform = 'translateY(0)'}
           >
             Start Learning Free
@@ -183,38 +155,37 @@ const HeroSection = () => {
 
           <button
             style={{
-              border: '1.5px solid rgba(255, 255, 255, 0.12)',
-              background: 'rgba(255, 255, 255, 0.02)',
-              backdropFilter: 'blur(10px)',
-              color: 'rgba(255, 255, 255, 0.85)',
-              padding: '14px 28px',
-              borderRadius: '10px',
-              fontSize: '15px',
+              border: '1px solid rgba(255, 255, 255, 0.15)',
+              background: 'transparent',
+              color: 'rgba(255, 255, 255, 0.9)',
+              padding: '12px 24px',
+              borderRadius: '6px',
+              fontSize: '14px',
               fontWeight: '600',
               cursor: 'pointer',
-              transition: 'all 0.3s',
+              transition: 'all 0.2s',
             }}
             onMouseEnter={(e) => {
               e.target.style.background = 'rgba(255, 255, 255, 0.05)';
-              e.target.style.borderColor = 'rgba(255, 255, 255, 0.2)';
+              e.target.style.borderColor = 'rgba(255, 255, 255, 0.25)';
             }}
             onMouseLeave={(e) => {
-              e.target.style.background = 'rgba(255, 255, 255, 0.02)';
-              e.target.style.borderColor = 'rgba(255, 255, 255, 0.12)';
+              e.target.style.background = 'transparent';
+              e.target.style.borderColor = 'rgba(255, 255, 255, 0.15)';
             }}
           >
             Watch Demo
           </button>
         </div>
 
-        {/* Stats */}
+        {/* Stats - Wider spread */}
         <div
           style={{
             display: 'flex',
             flexWrap: 'wrap',
             justifyContent: 'center',
-            gap: 'clamp(40px, 8vw, 72px)',
-            marginBottom: '48px',
+            gap: 'clamp(48px, 10vw, 96px)',
+            marginBottom: '40px',
           }}
         >
           {[
@@ -225,7 +196,7 @@ const HeroSection = () => {
             <div key={i} style={{ textAlign: 'center' }}>
               <div
                 style={{
-                  fontSize: 'clamp(28px, 4vw, 34px)',
+                  fontSize: 'clamp(28px, 3.5vw, 36px)',
                   fontWeight: '700',
                   color: '#ffffff',
                   letterSpacing: '-0.02em',
@@ -236,9 +207,9 @@ const HeroSection = () => {
               <div
                 style={{
                   fontSize: '10px',
-                  color: 'rgba(255, 255, 255, 0.3)',
+                  color: 'rgba(255, 255, 255, 0.25)',
                   textTransform: 'uppercase',
-                  letterSpacing: '0.12em',
+                  letterSpacing: '0.1em',
                   marginTop: '6px',
                 }}
               >
@@ -248,12 +219,12 @@ const HeroSection = () => {
           ))}
         </div>
 
-        {/* Language Icons */}
+        {/* Language Icons - Monochrome white */}
         <div
           style={{
             display: 'flex',
             justifyContent: 'center',
-            gap: '10px',
+            gap: '12px',
             flexWrap: 'wrap',
           }}
         >
@@ -261,32 +232,33 @@ const HeroSection = () => {
             <div
               key={lang.name}
               style={{
-                width: '52px',
-                height: '52px',
-                background: 'rgba(255, 255, 255, 0.04)',
-                borderRadius: '12px',
+                width: '48px',
+                height: '48px',
+                background: 'rgba(255, 255, 255, 0.03)',
+                borderRadius: '8px',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
                 border: '1px solid rgba(255, 255, 255, 0.08)',
                 cursor: 'pointer',
-                backdropFilter: 'blur(8px)',
                 transition: 'all 0.3s',
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.transform = 'translateY(-4px) scale(1.05)';
+                e.currentTarget.style.transform = 'translateY(-3px)';
                 e.currentTarget.style.background = 'rgba(255, 255, 255, 0.08)';
+                e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.15)';
               }}
               onMouseLeave={(e) => {
-                e.currentTarget.style.transform = 'translateY(0) scale(1)';
-                e.currentTarget.style.background = 'rgba(255, 255, 255, 0.04)';
+                e.currentTarget.style.transform = 'translateY(0)';
+                e.currentTarget.style.background = 'rgba(255, 255, 255, 0.03)';
+                e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.08)';
               }}
             >
               <lang.Icon
                 style={{
-                  fontSize: '24px',
+                  fontSize: '22px',
                   color: lang.color,
-                  opacity: 0.75,
+                  opacity: 0.6,
                 }}
               />
             </div>
