@@ -6,48 +6,21 @@ gsap.registerPlugin(ScrollTrigger);
 
 const FeaturesSection = () => {
   const sectionRef = useRef(null);
-  const titleRef = useRef(null);
   const cardsRef = useRef([]);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      gsap.from(titleRef.current, {
+      gsap.from(cardsRef.current, {
         opacity: 0,
-        y: 30,
+        y: 40,
+        stagger: 0.15,
         duration: 0.8,
-        ease: 'power3.out',
+        ease: 'power2.out',
         scrollTrigger: {
-          trigger: titleRef.current,
-          start: 'top 80%',
-          toggleActions: 'play none none reverse',
+          trigger: sectionRef.current,
+          start: 'top 70%',
         },
       });
-
-      cardsRef.current.forEach((card, i) => {
-        if (card) {
-          gsap.from(card, {
-            opacity: 0,
-            y: 40,
-            duration: 0.6,
-            ease: 'power2.out',
-            scrollTrigger: {
-              trigger: card,
-              start: 'top 85%',
-              toggleActions: 'play none none reverse',
-            },
-            delay: i * 0.1,
-          });
-
-          card.addEventListener('mouseenter', () => {
-            gsap.to(card, { y: -8, duration: 0.3, ease: 'power2.out' });
-          });
-
-          card.addEventListener('mouseleave', () => {
-            gsap.to(card, { y: 0, duration: 0.3, ease: 'power2.out' });
-          });
-        }
-      });
-
     }, sectionRef);
 
     return () => ctx.revert();
@@ -55,141 +28,153 @@ const FeaturesSection = () => {
 
   const features = [
     {
-      icon: (
-        <svg width="28" height="28" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-          <path strokeLinecap="round" strokeLinejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
-        </svg>
-      ),
       title: '2D Visualization',
       description: 'Watch your code come to life with real-time 2D animations of data structures, algorithms, and execution flow.',
-    },
-    {
       icon: (
-        <svg width="28" height="28" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+          <circle cx="12" cy="12" r="3"/>
         </svg>
       ),
+    },
+    {
       title: 'AI-Powered Hints',
-      description: 'Get contextual help when you\'re stuck—smart hints guide you without giving away the full solution.',
-    },
-    {
+      description: "Get contextual help when you're stuck—smart hints guide you without giving away the full solution.",
       icon: (
-        <svg width="28" height="28" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+          <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
         </svg>
       ),
+    },
+    {
       title: 'Multi-Language Support',
       description: 'Code in Python, Java, C++, JavaScript, or C with full syntax highlighting and execution support.',
+      icon: (
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+          <polyline points="16 18 22 12 16 6"/>
+          <polyline points="8 6 2 12 8 18"/>
+        </svg>
+      ),
     },
   ];
 
   return (
-    <section 
+    <section
       ref={sectionRef}
       id="features"
       style={{
         position: 'relative',
+        padding: '120px 32px',
         background: '#000000',
-        padding: '128px 24px',
+        overflow: 'hidden',
       }}
     >
       <div style={{
-        maxWidth: '1152px',
+        maxWidth: '1200px',
         margin: '0 auto',
       }}>
-        {/* Section Title - CENTERED WITH INLINE STYLES */}
-        <div 
-          ref={titleRef} 
-          style={{
-            textAlign: 'center',
-            marginBottom: '80px',
-            width: '100%',
-          }}
-        >
-          <h2 style={{
-            fontSize: '56px',
-            fontWeight: '600',
-            color: '#ffffff',
-            marginBottom: '24px',
-            letterSpacing: '-0.02em',
-            lineHeight: '1.1',
-          }}>
+        {/* Section Header */}
+        <div style={{
+          textAlign: 'center',
+          marginBottom: '80px',
+        }}>
+          <h2
+            style={{
+              fontSize: 'clamp(36px, 5vw, 56px)',
+              fontWeight: '600',
+              color: '#ffffff',
+              marginBottom: '16px',
+              letterSpacing: '-0.03em',
+            }}
+          >
             Built for learning
           </h2>
-          <p style={{
-            fontSize: '18px',
-            color: 'rgba(255, 255, 255, 0.4)',
-            maxWidth: '672px',
-            margin: '0 auto',
-            lineHeight: '1.7',
-          }}>
+          <p
+            style={{
+              fontSize: 'clamp(16px, 2vw, 18px)',
+              color: 'rgba(255, 255, 255, 0.5)',
+              maxWidth: '600px',
+              margin: '0 auto',
+            }}
+          >
             Everything you need to master programming through visual learning and intelligent guidance
           </p>
         </div>
 
-        {/* Features Grid */}
-        <div style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
-          gap: '24px',
-          width: '100%',
-        }}>
+        {/* Feature Cards */}
+        <div
+          style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
+            gap: '24px',
+          }}
+        >
           {features.map((feature, i) => (
             <div
               key={i}
-              ref={el => cardsRef.current[i] = el}
+              ref={(el) => (cardsRef.current[i] = el)}
               style={{
                 position: 'relative',
-                background: 'rgba(255, 255, 255, 0.03)',
-                backdropFilter: 'blur(8px)',
+                background: 'linear-gradient(to bottom, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.01))',
+                border: '1px solid rgba(255, 255, 255, 0.08)',
                 borderRadius: '16px',
-                padding: '40px',
-                border: '1px solid rgba(255, 255, 255, 0.1)',
-                transition: 'all 0.3s ease',
-                cursor: 'pointer',
+                padding: '40px 32px',
+                transition: 'all 0.3s',
+                cursor: 'default',
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.15)';
+                e.currentTarget.style.transform = 'translateY(-4px)';
+                e.currentTarget.style.background = 'linear-gradient(to bottom, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02))';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.08)';
+                e.currentTarget.style.transform = 'translateY(0)';
+                e.currentTarget.style.background = 'linear-gradient(to bottom, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.01))';
               }}
             >
-              {/* Icon - CENTERED */}
-              <div style={{
-                display: 'flex',
-                justifyContent: 'center',
-                marginBottom: '32px',
-              }}>
-                <div style={{
-                  width: '64px',
-                  height: '64px',
-                  borderRadius: '16px',
+              {/* Icon */}
+              <div
+                style={{
+                  width: '56px',
+                  height: '56px',
+                  borderRadius: '12px',
                   background: 'rgba(255, 255, 255, 0.05)',
                   border: '1px solid rgba(255, 255, 255, 0.1)',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
+                  marginBottom: '24px',
                   color: '#ffffff',
-                }}>
-                  {feature.icon}
-                </div>
+                }}
+              >
+                {feature.icon}
               </div>
 
-              {/* Content - CENTERED */}
-              <div style={{ textAlign: 'center' }}>
-                <h3 style={{
+              {/* Title */}
+              <h3
+                style={{
                   fontSize: '20px',
                   fontWeight: '600',
                   color: '#ffffff',
-                  marginBottom: '16px',
+                  marginBottom: '12px',
                   letterSpacing: '-0.01em',
-                }}>
-                  {feature.title}
-                </h3>
-                <p style={{
-                  fontSize: '14px',
+                }}
+              >
+                {feature.title}
+              </h3>
+
+              {/* Description */}
+              <p
+                style={{
+                  fontSize: '15px',
+                  lineHeight: 1.7,
                   color: 'rgba(255, 255, 255, 0.5)',
-                  lineHeight: '1.6',
-                }}>
-                  {feature.description}
-                </p>
-              </div>
+                  fontWeight: '400',
+                }}
+              >
+                {feature.description}
+              </p>
             </div>
           ))}
         </div>
