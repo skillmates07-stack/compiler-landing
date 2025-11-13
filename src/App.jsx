@@ -2,6 +2,8 @@ import Header from './components/layout/Header';
 import HeroSection from './components/sections/HeroSection';
 import FeaturesSection from './components/sections/FeaturesSection';
 import DemoSection from './components/sections/DemoSection';
+import CTASection from './components/sections/CTASection';
+import Footer from './components/layout/Footer';
 
 function App() {
   return (
@@ -10,6 +12,8 @@ function App() {
       <HeroSection />
       <FeaturesSection />
       <DemoSection />
+      <CTASection />
+      <Footer />
     </div>
   );
 }
