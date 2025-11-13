@@ -1,22 +1,24 @@
 @import "tailwindcss";
 
-/* Professional Typography */
+/* Reset */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
+/* Professional Typography */
 body {
-  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Inter', sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Inter', 'Segoe UI', sans-serif;
   background: #000000;
   color: #ffffff;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
+  overflow-x: hidden;
 }
 
-/* Custom Scrollbar - Minimal */
+/* Scrollbar - Minimal */
 ::-webkit-scrollbar {
   width: 8px;
 }
@@ -31,16 +33,16 @@ body {
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #333;
+  background: #333333;
 }
 
-/* Selection Color */
+/* Selection */
 ::selection {
   background: #00a8ff;
   color: #ffffff;
 }
 
-/* Remove default button styles */
+/* Button Reset */
 button {
   border: none;
   background: none;
@@ -48,14 +50,28 @@ button {
   font-family: inherit;
 }
 
-/* Smooth Animations */
+/* Smooth Transitions */
 * {
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+/* Animations */
 @keyframes ping {
   75%, 100% {
     transform: scale(1.5);
     opacity: 0;
   }
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-25%);
+  }
+}
+
+.animate-bounce {
+  animation: bounce 1s infinite;
 }
