@@ -19,7 +19,6 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Custom scrollbar (OneCompiler style) */
 ::-webkit-scrollbar {
   width: 10px;
 }
@@ -37,7 +36,6 @@ body {
   background: #2563eb;
 }
 
-/* Grid pattern background */
 .bg-grid-pattern {
   background-image: 
     linear-gradient(rgba(59, 130, 246, 0.05) 1px, transparent 1px),
@@ -45,7 +43,6 @@ body {
   background-size: 50px 50px;
 }
 
-/* Gradient text effect */
 .gradient-text {
   background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
   -webkit-background-clip: text;
