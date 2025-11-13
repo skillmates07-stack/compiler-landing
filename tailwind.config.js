@@ -2,7 +2,7 @@
 export default {
   content: [
     "./index.html",
-    "./src/**/*.{js,ts,jsx,tsx}",
+    "./src/**/*.{js,jsx,ts,tsx}",
   ],
   darkMode: 'class',
   theme: {
@@ -17,6 +17,9 @@ export default {
           card: '#1a1a1a',
           border: '#333333',
         }
+      },
+      fontFamily: {
+        sans: ['-apple-system', 'BlinkMacSystemFont', 'Inter', 'Segoe UI', 'sans-serif'],
       },
       boxShadow: {
         glow: '0 0 40px rgba(59, 130, 246, 0.3)',
