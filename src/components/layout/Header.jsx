@@ -1,7 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
-import { FaCode } from 'react-icons/fa';
-import { HiMenu, HiX } from 'react-icons/hi';
 
 const Header = () => {
   const headerRef = useRef(null);
@@ -35,73 +33,239 @@ const Header = () => {
   return (
     <header 
       ref={headerRef}
-      className="fixed top-0 left-0 right-0 z-50 bg-black/40 backdrop-blur-lg"
+      style={{
+        position: 'fixed',
+        top: 0,
+        left: 0,
+        right: 0,
+        zIndex: 50,
+        background: '#000000',
+        borderBottom: '1px solid rgba(255, 255, 255, 0.08)',
+      }}
     >
-      <div className="max-w-[1400px] mx-auto px-8 py-5">
-        <div className="flex items-center justify-between">
-          {/* Logo - Dark.design style */}
-          <div className="flex items-center gap-2.5 cursor-pointer">
-            <div className="w-7 h-7 bg-white rounded-md flex items-center justify-center hover:scale-105 transition-transform duration-200">
-              <FaCode className="text-black text-sm" />
+      <div style={{
+        maxWidth: '1400px',
+        margin: '0 auto',
+        padding: '0 32px',
+      }}>
+        <div style={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          height: '64px',
+        }}>
+          {/* Logo - Left */}
+          <div style={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: '8px',
+            cursor: 'pointer',
+          }}>
+            <div style={{
+              width: '28px',
+              height: '28px',
+              background: '#ffffff',
+              borderRadius: '4px',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+            }}>
+              <svg width="16" height="16" fill="#000000" viewBox="0 0 24 24">
+                <path d="M9 4.804A7.968 7.968 0 0 0 5.5 4c-1.255 0-2.443.29-3.5.804v10A7.969 7.969 0 0 1 5.5 14c1.669 0 3.218.51 4.5 1.385A7.962 7.962 0 0 1 14.5 14c1.255 0 2.443.29 3.5.804v-10A7.968 7.968 0 0 0 14.5 4c-1.255 0-2.443.29-3.5.804V19a1 1 0 1 1-2 0V4.804Z"/>
+              </svg>
             </div>
-            <span className="text-base font-semibold text-white">
+            <span style={{
+              fontSize: '18px',
+              fontWeight: '700',
+              color: '#ffffff',
+              letterSpacing: '-0.01em',
+            }}>
               CodeFlow
             </span>
           </div>
 
-          {/* Desktop Navigation - Wide spacing like Dark.design */}
-          <nav className="hidden md:flex items-center gap-10">
+          {/* Desktop Navigation - Center Left */}
+          <nav style={{
+            display: 'none',
+            '@media (min-width: 768px)': {
+              display: 'flex',
+            },
+            alignItems: 'center',
+            gap: '32px',
+            marginLeft: '48px',
+          }}
+          className="hidden md:flex"
+          >
             {['Features', 'Demo', 'Pricing', 'Docs'].map((item) => (
               <a
                 key={item}
                 href={`#${item.toLowerCase()}`}
-                className="text-[14px] text-white/70 hover:text-white transition-colors duration-200"
+                style={{
+                  fontSize: '14px',
+                  color: 'rgba(255, 255, 255, 0.7)',
+                  textDecoration: 'none',
+                  fontWeight: '500',
+                  transition: 'color 0.2s',
+                }}
+                onMouseEnter={(e) => e.target.style.color = '#ffffff'}
+                onMouseLeave={(e) => e.target.style.color = 'rgba(255, 255, 255, 0.7)'}
               >
                 {item}
               </a>
             ))}
           </nav>
 
-          {/* Right side buttons - Dark.design style */}
-          <div className="hidden md:flex items-center gap-3">
-            <button className="text-[14px] text-white/70 hover:text-white px-4 py-2 transition-colors duration-200">
+          {/* Right Side Buttons */}
+          <div style={{
+            display: 'none',
+            alignItems: 'center',
+            gap: '16px',
+          }}
+          className="hidden md:flex"
+          >
+            {/* Submit Button with Icon */}
+            <button style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: '6px',
+              background: 'transparent',
+              border: 'none',
+              color: 'rgba(255, 255, 255, 0.7)',
+              fontSize: '14px',
+              fontWeight: '500',
+              cursor: 'pointer',
+              padding: '8px 12px',
+              transition: 'color 0.2s',
+            }}
+            onMouseEnter={(e) => e.currentTarget.style.color = '#ffffff'}
+            onMouseLeave={(e) => e.currentTarget.style.color = 'rgba(255, 255, 255, 0.7)'}
+            >
+              <svg width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
+              </svg>
+              Submit
+            </button>
+
+            {/* Sign in */}
+            <button style={{
+              background: 'transparent',
+              border: 'none',
+              color: 'rgba(255, 255, 255, 0.7)',
+              fontSize: '14px',
+              fontWeight: '500',
+              cursor: 'pointer',
+              padding: '8px 16px',
+              transition: 'color 0.2s',
+            }}
+            onMouseEnter={(e) => e.target.style.color = '#ffffff'}
+            onMouseLeave={(e) => e.target.style.color = 'rgba(255, 255, 255, 0.7)'}
+            >
               Sign in
             </button>
-            <button className="bg-white hover:bg-white/90 text-black px-5 py-2 rounded-lg text-[14px] font-medium transition-all duration-200">
-              Get Started
+
+            {/* Create Account - White Button */}
+            <button style={{
+              background: '#ffffff',
+              color: '#000000',
+              border: 'none',
+              padding: '8px 16px',
+              borderRadius: '6px',
+              fontSize: '14px',
+              fontWeight: '600',
+              cursor: 'pointer',
+              transition: 'all 0.2s',
+            }}
+            onMouseEnter={(e) => {
+              e.target.style.background = 'rgba(255, 255, 255, 0.9)';
+              e.target.style.transform = 'translateY(-1px)';
+            }}
+            onMouseLeave={(e) => {
+              e.target.style.background = '#ffffff';
+              e.target.style.transform = 'translateY(0)';
+            }}
+            >
+              Create Account
             </button>
           </div>
 
-          {/* Mobile Toggle */}
+          {/* Mobile Menu Toggle */}
           <button 
-            className="md:hidden text-white text-2xl"
+            style={{
+              display: 'block',
+              background: 'transparent',
+              border: 'none',
+              color: '#ffffff',
+              fontSize: '24px',
+              cursor: 'pointer',
+              padding: '8px',
+            }}
+            className="md:hidden"
             onClick={() => setIsOpen(!isOpen)}
           >
-            {isOpen ? <HiX /> : <HiMenu />}
+            {isOpen ? '✕' : '☰'}
           </button>
         </div>
 
         {/* Mobile Menu */}
         {isOpen && (
-          <nav className="md:hidden mt-4 pb-4 flex flex-col gap-3 border-t border-white/10 pt-4">
+          <nav style={{
+            display: 'flex',
+            flexDirection: 'column',
+            gap: '16px',
+            padding: '24px 0',
+            borderTop: '1px solid rgba(255, 255, 255, 0.08)',
+          }}
+          className="md:hidden"
+          >
             {['Features', 'Demo', 'Pricing', 'Docs'].map((item) => (
               <a
                 key={item}
                 href={`#${item.toLowerCase()}`}
-                className="text-[14px] text-white/70 hover:text-white transition-colors duration-200"
+                style={{
+                  fontSize: '14px',
+                  color: 'rgba(255, 255, 255, 0.7)',
+                  textDecoration: 'none',
+                  fontWeight: '500',
+                }}
                 onClick={() => setIsOpen(false)}
               >
                 {item}
               </a>
             ))}
-            <div className="flex flex-col gap-2 mt-2">
-              <button className="text-[14px] text-white/70 px-4 py-2 text-left">
-                Sign in
-              </button>
-              <button className="bg-white text-black px-5 py-2 rounded-lg text-[14px] font-medium w-full">
-                Get Started
-              </button>
-            </div>
+            <button style={{
+              background: 'transparent',
+              border: 'none',
+              color: 'rgba(255, 255, 255, 0.7)',
+              fontSize: '14px',
+              fontWeight: '500',
+              textAlign: 'left',
+              padding: '8px 0',
+            }}>
+              Submit
+            </button>
+            <button style={{
+              background: 'transparent',
+              border: 'none',
+              color: 'rgba(255, 255, 255, 0.7)',
+              fontSize: '14px',
+              fontWeight: '500',
+              textAlign: 'left',
+              padding: '8px 0',
+            }}>
+              Sign in
+            </button>
+            <button style={{
+              background: '#ffffff',
+              color: '#000000',
+              border: 'none',
+              padding: '10px 16px',
+              borderRadius: '6px',
+              fontSize: '14px',
+              fontWeight: '600',
+              marginTop: '8px',
+            }}>
+              Create Account
+            </button>
           </nav>
         )}
       </div>
