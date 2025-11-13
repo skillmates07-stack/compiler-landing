@@ -15,7 +15,6 @@ const Header = () => {
       ease: 'power2.out',
     });
 
-    // Hide header on scroll down, show on scroll up
     let lastScroll = 0;
     const handleScroll = () => {
       const currentScroll = window.pageYOffset;
@@ -36,41 +35,41 @@ const Header = () => {
   return (
     <header 
       ref={headerRef}
-      className="fixed top-0 left-0 right-0 z-50 bg-black/80 backdrop-blur-xl border-b border-[#1f1f1f]"
+      className="fixed top-0 left-0 right-0 z-50 bg-black/60 backdrop-blur-md border-b border-white/5"
     >
-      <div className="max-w-7xl mx-auto px-8 py-4">
+      <div className="max-w-7xl mx-auto px-6 py-3">
         <div className="flex items-center justify-between">
-          {/* Logo */}
+          {/* Logo - Minimal like Fey */}
           <div className="flex items-center gap-2 cursor-pointer">
-            <div className="w-8 h-8 bg-[#00a8ff] rounded-md flex items-center justify-center hover:bg-[#0088cc] transition-colors duration-200">
-              <FaCode className="text-white text-sm" />
+            <div className="w-7 h-7 bg-white/10 rounded-md flex items-center justify-center hover:bg-white/15 transition-colors duration-200">
+              <FaCode className="text-white/80 text-sm" />
             </div>
-            <span className="text-lg font-semibold text-white">
+            <span className="text-base font-medium text-white/90">
               CodeFlow
             </span>
           </div>
 
-          {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-8">
+          {/* Desktop Navigation - Minimal */}
+          <nav className="hidden md:flex items-center gap-6">
             {['Features', 'Demo', 'Pricing', 'Docs'].map((item) => (
               <a
                 key={item}
                 href={`#${item.toLowerCase()}`}
-                className="text-[14px] text-[#a0a0a0] hover:text-white transition-colors duration-200"
+                className="text-[13px] text-white/50 hover:text-white/90 transition-colors duration-200"
               >
                 {item}
               </a>
             ))}
           </nav>
 
-          {/* CTA Button */}
-          <button className="hidden md:block bg-[#00a8ff] hover:bg-[#0088cc] text-white px-5 py-2 rounded-lg text-[14px] font-medium transition-all duration-200">
+          {/* CTA Button - Minimal */}
+          <button className="hidden md:block bg-white/10 hover:bg-white/15 text-white/90 px-4 py-1.5 rounded-md text-[13px] font-medium transition-all duration-200 border border-white/10">
             Get Started
           </button>
 
-          {/* Mobile Menu Toggle */}
+          {/* Mobile Toggle */}
           <button 
-            className="md:hidden text-white text-2xl"
+            className="md:hidden text-white/80 text-xl"
             onClick={() => setIsOpen(!isOpen)}
           >
             {isOpen ? <HiX /> : <HiMenu />}
@@ -79,18 +78,18 @@ const Header = () => {
 
         {/* Mobile Menu */}
         {isOpen && (
-          <nav className="md:hidden mt-4 pb-4 flex flex-col gap-3 border-t border-[#1f1f1f] pt-4">
+          <nav className="md:hidden mt-3 pb-3 flex flex-col gap-2 border-t border-white/5 pt-3">
             {['Features', 'Demo', 'Pricing', 'Docs'].map((item) => (
               <a
                 key={item}
                 href={`#${item.toLowerCase()}`}
-                className="text-[14px] text-[#a0a0a0] hover:text-white transition-colors duration-200"
+                className="text-[13px] text-white/50 hover:text-white/90 transition-colors duration-200"
                 onClick={() => setIsOpen(false)}
               >
                 {item}
               </a>
             ))}
-            <button className="bg-[#00a8ff] hover:bg-[#0088cc] text-white px-5 py-2 rounded-lg text-[14px] font-medium w-full mt-2 transition-all duration-200">
+            <button className="bg-white/10 hover:bg-white/15 text-white/90 px-4 py-1.5 rounded-md text-[13px] font-medium w-full mt-2 transition-all duration-200 border border-white/10">
               Get Started
             </button>
           </nav>
