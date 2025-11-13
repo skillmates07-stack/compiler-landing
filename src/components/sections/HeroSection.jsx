@@ -104,10 +104,9 @@ const HeroSection = () => {
         alignItems: 'center',
         justifyContent: 'center',
         background: '#000000',
-        padding: '128px 24px',
+        padding: '128px 24px 80px 24px',
       }}
     >
-      {/* Subtle gradient */}
       <div style={{
         position: 'absolute',
         inset: 0,
@@ -115,7 +114,6 @@ const HeroSection = () => {
         opacity: 0.8,
       }}></div>
 
-      {/* Noise texture */}
       <div 
         style={{
           position: 'absolute',
@@ -134,7 +132,6 @@ const HeroSection = () => {
         textAlign: 'center',
         width: '100%',
       }}>
-        {/* Hero Title - CENTERED */}
         <h1 
           ref={titleRef}
           style={{
@@ -151,7 +148,6 @@ const HeroSection = () => {
           <span style={{ color: 'rgba(255, 255, 255, 0.6)' }}>Visual Intelligence</span>
         </h1>
 
-        {/* Subtitle - CENTERED */}
         <p 
           ref={subtitleRef}
           style={{
@@ -159,14 +155,13 @@ const HeroSection = () => {
             lineHeight: 1.7,
             color: 'rgba(255, 255, 255, 0.4)',
             maxWidth: '672px',
-            margin: '0 auto 56px auto',
+            margin: '0 auto 48px auto',
             fontWeight: 'normal',
           }}
         >
           Master programming through 2D visualization, AI-powered hints, and interactive learning across 5+ languages
         </p>
 
-        {/* CTA Buttons - CENTERED */}
         <div 
           ref={ctaRef}
           style={{
@@ -175,7 +170,7 @@ const HeroSection = () => {
             gap: '12px',
             justifyContent: 'center',
             alignItems: 'center',
-            marginBottom: '96px',
+            marginBottom: '80px',
             flexWrap: 'wrap',
           }}
         >
@@ -209,7 +204,6 @@ const HeroSection = () => {
           </button>
         </div>
 
-        {/* Stats - CENTERED */}
         <div 
           ref={statsRef}
           style={{
@@ -217,7 +211,7 @@ const HeroSection = () => {
             flexWrap: 'wrap',
             justifyContent: 'center',
             gap: '80px',
-            marginBottom: '96px',
+            marginBottom: '56px',
           }}
         >
           {[
@@ -247,7 +241,6 @@ const HeroSection = () => {
           ))}
         </div>
 
-        {/* Language Icons - CENTERED */}
         <div style={{
           display: 'flex',
           justifyContent: 'center',
@@ -284,10 +277,9 @@ const HeroSection = () => {
         </div>
       </div>
 
-      {/* Scroll indicator */}
       <div style={{
         position: 'absolute',
-        bottom: '40px',
+        bottom: '32px',
         left: '50%',
         transform: 'translateX(-50%)',
         display: 'flex',
