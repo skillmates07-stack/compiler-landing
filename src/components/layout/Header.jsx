@@ -1,9 +1,8 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 
 const Header = () => {
   const headerRef = useRef(null);
-  const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
     gsap.from(headerRef.current, {
@@ -52,7 +51,7 @@ const Header = () => {
         justifyContent: 'space-between',
         height: '64px',
       }}>
-        {/* Logo - Left */}
+        {/* Logo */}
         <div style={{
           display: 'flex',
           alignItems: 'center',
@@ -82,13 +81,13 @@ const Header = () => {
           </span>
         </div>
 
-        {/* Center Navigation + Right Buttons - Desktop Only */}
+        {/* Center + Right */}
         <div style={{
           display: 'flex',
           alignItems: 'center',
           gap: '32px',
         }}>
-          {/* Navigation Links */}
+          {/* Nav Links */}
           <nav style={{
             display: 'flex',
             alignItems: 'center',
@@ -113,75 +112,59 @@ const Header = () => {
             ))}
           </nav>
 
-          {/* Right Side Buttons */}
+          {/* Right Buttons (No Submit) */}
           <div style={{
             display: 'flex',
             alignItems: 'center',
             gap: '16px',
           }}>
-            {/* Submit Button with Icon */}
-            <button style={{
-              display: 'flex',
-              alignItems: 'center',
-              gap: '6px',
-              background: 'transparent',
-              border: 'none',
-              color: 'rgba(255, 255, 255, 0.7)',
-              fontSize: '14px',
-              fontWeight: '500',
-              cursor: 'pointer',
-              padding: '8px 12px',
-              transition: 'color 0.2s',
-            }}
-            onMouseEnter={(e) => e.currentTarget.style.color = '#ffffff'}
-            onMouseLeave={(e) => e.currentTarget.style.color = 'rgba(255, 255, 255, 0.7)'}
-            >
-              <svg width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
-              </svg>
-              Submit
-            </button>
-
             {/* Sign in */}
-            <button style={{
-              background: 'transparent',
-              border: 'none',
-              color: 'rgba(255, 255, 255, 0.7)',
-              fontSize: '14px',
-              fontWeight: '500',
-              cursor: 'pointer',
-              padding: '8px 16px',
-              transition: 'color 0.2s',
-            }}
-            onMouseEnter={(e) => e.target.style.color = '#ffffff'}
-            onMouseLeave={(e) => e.target.style.color = 'rgba(255, 255, 255, 0.7)'}
+            <a
+              href="/signin"
+              style={{
+                background: 'transparent',
+                border: 'none',
+                color: 'rgba(255, 255, 255, 0.7)',
+                fontSize: '14px',
+                fontWeight: '500',
+                cursor: 'pointer',
+                padding: '8px 16px',
+                transition: 'color 0.2s',
+                textDecoration: 'none',
+              }}
+              onMouseEnter={(e) => e.target.style.color = '#ffffff'}
+              onMouseLeave={(e) => e.target.style.color = 'rgba(255, 255, 255, 0.7)'}
             >
               Sign in
-            </button>
+            </a>
 
-            {/* Create Account - White Button */}
-            <button style={{
-              background: '#ffffff',
-              color: '#000000',
-              border: 'none',
-              padding: '8px 16px',
-              borderRadius: '6px',
-              fontSize: '14px',
-              fontWeight: '600',
-              cursor: 'pointer',
-              transition: 'all 0.2s',
-            }}
-            onMouseEnter={(e) => {
-              e.target.style.background = 'rgba(255, 255, 255, 0.9)';
-              e.target.style.transform = 'translateY(-1px)';
-            }}
-            onMouseLeave={(e) => {
-              e.target.style.background = '#ffffff';
-              e.target.style.transform = 'translateY(0)';
-            }}
+            {/* Create Account */}
+            <a
+              href="/register"
+              style={{
+                background: '#ffffff',
+                color: '#000000',
+                border: 'none',
+                padding: '8px 16px',
+                borderRadius: '6px',
+                fontSize: '14px',
+                fontWeight: '600',
+                cursor: 'pointer',
+                transition: 'all 0.2s',
+                textDecoration: 'none',
+                display: 'inline-block',
+              }}
+              onMouseEnter={(e) => {
+                e.target.style.background = 'rgba(255, 255, 255, 0.9)';
+                e.target.style.transform = 'translateY(-1px)';
+              }}
+              onMouseLeave={(e) => {
+                e.target.style.background = '#ffffff';
+                e.target.style.transform = 'translateY(0)';
+              }}
             >
               Create Account
-            </button>
+            </a>
           </div>
         </div>
       </div>
