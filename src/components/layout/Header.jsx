@@ -58,8 +58,9 @@ const Header = () => {
         left: 0,
         right: 0,
         zIndex: 50,
-        background: 'rgba(0, 0, 0, 0.8)',
-        backdropFilter: 'blur(12px)',
+        background: 'rgba(0, 0, 0, 0.75)',
+        backdropFilter: 'blur(20px)',
+        WebkitBackdropFilter: 'blur(20px)',
         borderBottom: '1px solid rgba(255, 255, 255, 0.1)',
       }}
     >
@@ -67,11 +68,10 @@ const Header = () => {
         maxWidth: '1400px',
         margin: '0 auto',
         padding: '0 32px',
-        height: '64px',
-        display: 'grid',
-        gridTemplateColumns: '1fr auto 1fr',
+        height: '72px',
+        display: 'flex',
         alignItems: 'center',
-        gap: '32px',
+        justifyContent: 'space-between',
       }}>
         {/* Logo - Left */}
         <div 
@@ -81,110 +81,147 @@ const Header = () => {
             alignItems: 'center',
             gap: '8px',
             cursor: 'pointer',
-            justifySelf: 'start',
           }}
         >
           <div style={{
-            width: '28px',
-            height: '28px',
+            width: '32px',
+            height: '32px',
             background: '#ffffff',
-            borderRadius: '4px',
+            borderRadius: '6px',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
           }}>
-            <svg width="16" height="16" fill="#000000" viewBox="0 0 24 24">
-              <path d="M9 4.804A7.968 7.968 0 0 0 5.5 4c-1.255 0-2.443.29-3.5.804v10A7.969 7.969 0 0 1 5.5 14c1.669 0 3.218.51 4.5 1.385A7.962 7.962 0 0 1 14.5 14c1.255 0 2.443.29 3.5.804v-10A7.968 7.968 0 0 0 14.5 4c-1.255 0-2.443.29-3.5.804V19a1 1 0 1 1-2 0V4.804Z"/>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#000000" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <polyline points="16 18 22 12 16 6" />
+              <polyline points="8 6 2 12 8 18" />
             </svg>
           </div>
           <span style={{
             fontSize: '18px',
             fontWeight: '700',
             color: '#ffffff',
-            letterSpacing: '-0.01em',
           }}>
             CodeFlow
           </span>
         </div>
 
-        {/* Nav Links - Center */}
+        {/* Nav Links + Auth Buttons - Right */}
         <div style={{
           display: 'flex',
           alignItems: 'center',
-          gap: '40px',
-          justifySelf: 'center',
+          gap: '32px',
         }}>
-          {['Features', 'Demo', 'Pricing'].map((item) => (
+          {/* Nav Links */}
+          <div style={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: '32px',
+          }}>
             <button
-              key={item}
-              onClick={() => scrollToSection(item.toLowerCase())}
+              onClick={() => scrollToSection('features')}
               style={{
                 background: 'transparent',
                 border: 'none',
-                fontSize: '14px',
                 color: 'rgba(255, 255, 255, 0.7)',
+                fontSize: '14px',
                 fontWeight: '500',
                 cursor: 'pointer',
+                transition: 'color 0.2s',
                 padding: 0,
+              }}
+              onMouseEnter={(e) => e.target.style.color = '#ffffff'}
+              onMouseLeave={(e) => e.target.style.color = 'rgba(255, 255, 255, 0.7)'}
+            >
+              Features
+            </button>
+
+            <button
+              onClick={() => scrollToSection('demo')}
+              style={{
+                background: 'transparent',
+                border: 'none',
+                color: 'rgba(255, 255, 255, 0.7)',
+                fontSize: '14px',
+                fontWeight: '500',
+                cursor: 'pointer',
+                transition: 'color 0.2s',
+                padding: 0,
+              }}
+              onMouseEnter={(e) => e.target.style.color = '#ffffff'}
+              onMouseLeave={(e) => e.target.style.color = 'rgba(255, 255, 255, 0.7)'}
+            >
+              Demo
+            </button>
+
+            <button
+              onClick={() => scrollToSection('pricing')}
+              style={{
+                background: 'transparent',
+                border: 'none',
+                color: 'rgba(255, 255, 255, 0.7)',
+                fontSize: '14px',
+                fontWeight: '500',
+                cursor: 'pointer',
+                transition: 'color 0.2s',
+                padding: 0,
+              }}
+              onMouseEnter={(e) => e.target.style.color = '#ffffff'}
+              onMouseLeave={(e) => e.target.style.color = 'rgba(255, 255, 255, 0.7)'}
+            >
+              Pricing
+            </button>
+          </div>
+
+          {/* Auth Buttons */}
+          <div style={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: '12px',
+          }}>
+            <button
+              onClick={() => navigate('/signin')}
+              style={{
+                background: 'transparent',
+                border: 'none',
+                color: 'rgba(255, 255, 255, 0.7)',
+                fontSize: '14px',
+                fontWeight: '500',
+                cursor: 'pointer',
+                padding: '8px 16px',
                 transition: 'color 0.2s',
               }}
               onMouseEnter={(e) => e.target.style.color = '#ffffff'}
               onMouseLeave={(e) => e.target.style.color = 'rgba(255, 255, 255, 0.7)'}
             >
-              {item}
+              Sign in
             </button>
-          ))}
-        </div>
 
-        {/* Auth Buttons - Right */}
-        <div style={{
-          display: 'flex',
-          alignItems: 'center',
-          gap: '12px',
-          justifySelf: 'end',
-        }}>
-          <button
-            onClick={() => navigate('/signin')}
-            style={{
-              background: 'transparent',
-              border: 'none',
-              color: 'rgba(255, 255, 255, 0.7)',
-              fontSize: '14px',
-              fontWeight: '500',
-              cursor: 'pointer',
-              padding: '8px 16px',
-              transition: 'color 0.2s',
-            }}
-            onMouseEnter={(e) => e.target.style.color = '#ffffff'}
-            onMouseLeave={(e) => e.target.style.color = 'rgba(255, 255, 255, 0.7)'}
-          >
-            Sign in
-          </button>
-
-          <button
-            onClick={() => navigate('/register')}
-            style={{
-              background: '#ffffff',
-              color: '#000000',
-              border: 'none',
-              padding: '8px 20px',
-              borderRadius: '6px',
-              fontSize: '14px',
-              fontWeight: '600',
-              cursor: 'pointer',
-              transition: 'all 0.2s',
-            }}
-            onMouseEnter={(e) => {
-              e.target.style.background = 'rgba(255, 255, 255, 0.9)';
-              e.target.style.transform = 'translateY(-1px)';
-            }}
-            onMouseLeave={(e) => {
-              e.target.style.background = '#ffffff';
-              e.target.style.transform = 'translateY(0)';
-            }}
-          >
-            Create Account
-          </button>
+            <button
+              onClick={() => navigate('/register')}
+              style={{
+                background: '#ffffff',
+                color: '#000000',
+                border: 'none',
+                padding: '8px 20px',
+                borderRadius: '6px',
+                fontSize: '14px',
+                fontWeight: '600',
+                cursor: 'pointer',
+                transition: 'all 0.2s',
+              }}
+              onMouseEnter={(e) => {
+                e.target.style.background = 'rgba(255, 255, 255, 0.9)';
+                e.target.style.transform = 'translateY(-1px)';
+              }}
+              onMouseLeave={(e) => {
+                e.target.style.background = '#ffffff';
+                e.target.style.transform = 'translateY(0)';
+              }}
+            >
+              Create Account
+            </button>
+          </div>
         </div>
       </nav>
     </header>
